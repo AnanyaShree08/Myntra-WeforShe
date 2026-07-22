@@ -438,9 +438,7 @@
           <!-- Actions -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-sm mt-lg">
             <button
-              onclick="
-                location.href = '../mynfit_recommendation_flow/code.html'
-              "
+              onclick="openModal()"
               class="min-h-[56px] px-md py-md rounded-xl border-2 border-primary text-primary text-label-md font-bold tracking-wide flex items-center justify-center gap-xs whitespace-nowrap hover:bg-primary/5 transition-all"
             >
               <span class="material-symbols-outlined text-[20px]"
@@ -908,6 +906,159 @@
         </div>
       </section>
     </main>
+    <!-- Modal Backdrop -->
+    <div
+      class="fixed inset-0 z-[100] bg-on-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-container-margin"
+      id="modal-overlay"
+    >
+      <!-- Modal Container -->
+      <div
+        class="bg-surface w-full max-w-md rounded-xl shadow-xl overflow-hidden relative transform scale-95 transition-transform duration-300"
+        id="modal-container"
+      >
+        <button
+          class="absolute top-md right-md z-10 text-on-surface-variant hover:text-on-surface"
+          onclick="closeModal()"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="step-transition block p-xl" id="step-1">
+          <div class="text-center mb-xl">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-fixed mb-md">
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1">person_pin</span>
+            </div>
+            <h2 class="text-headline-md font-headline-md">Find Your Perfect Fit</h2>
+            <p class="text-body-md font-body-md text-on-surface-variant mt-xs">Precision sizing powered by millions of shoppers.</p>
+          </div>
+          <div class="space-y-lg">
+            <div>
+              <label class="text-label-md font-label-md text-on-surface-variant mb-xs block">Gender</label>
+              <div class="flex p-1 bg-surface-container rounded-lg gap-1">
+                <button
+                  class="flex-1 py-xs rounded-md bg-surface text-primary font-title-sm shadow-sm border border-outline-variant"
+                  id="gender-men-btn"
+                  onclick="selectGender('Male')"
+                >
+                  Men
+                </button>
+                <button
+                  class="flex-1 py-xs rounded-md text-on-surface-variant font-title-sm hover:bg-surface-container-high"
+                  id="gender-women-btn"
+                  onclick="selectGender('Female')"
+                >
+                  Women
+                </button>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-md">
+              <div>
+                <label class="text-label-md font-label-md text-on-surface-variant mb-xs block" for="height">Height (cm)</label>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">height</span>
+                  <input
+                    class="w-full pl-xl pr-md py-md rounded-lg border border-outline bg-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    id="height"
+                    placeholder="175"
+                    type="number"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="text-label-md font-label-md text-on-surface-variant mb-xs block" for="weight">Weight (kg)</label>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">weight</span>
+                  <input
+                    class="w-full pl-xl pr-md py-md rounded-lg border border-outline bg-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    id="weight"
+                    placeholder="70"
+                    type="number"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-full bg-primary text-on-primary py-md rounded-lg font-title-sm hover:opacity-90 transition-all shadow-md"
+              onclick="goToStep(2)"
+            >
+              Calculate Recommendation
+            </button>
+          </div>
+        </div>
+        <div class="step-transition hidden p-xl text-center py-32" id="step-2">
+          <div class="relative w-24 h-24 mx-auto mb-xl">
+            <div class="absolute inset-0 rounded-full mynfit-gradient animate-ping opacity-20"></div>
+            <div class="relative w-24 h-24 rounded-full mynfit-gradient flex items-center justify-center text-on-primary">
+              <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: &quot;FILL&quot; 1">psychology</span>
+            </div>
+          </div>
+          <h2 class="text-title-sm font-title-sm text-primary mb-xs">Analyzing 2.4M purchase outcomes...</h2>
+          <p class="text-body-md font-body-md text-on-surface-variant mb-xl">Matching your profile with shoppers like you.</p>
+          <div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+            <div class="h-full bg-primary w-0 transition-all duration-[3000ms] ease-out" id="progress-bar"></div>
+          </div>
+        </div>
+        <div class="step-transition hidden" id="step-3">
+          <div class="p-xl bg-primary-fixed/20 border-b border-primary/10">
+            <div class="flex items-center justify-between mb-md">
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1">verified</span>
+                <span class="text-headline-md font-headline-md text-primary" id="confidence-badge-label">High Confidence Match</span>
+              </div>
+              <span class="text-headline-md font-headline-md text-primary" id="confidence-value">94%</span>
+            </div>
+            <div class="flex items-baseline gap-sm">
+              <span class="text-[56px] font-black text-on-surface leading-none" id="recommended-size">Size M</span>
+              <span class="text-body-md font-body-md text-on-surface-variant">Recommended for you</span>
+            </div>
+          </div>
+          <div class="p-xl">
+            <div class="flex gap-md mb-xl">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-on-surface-variant">group</span>
+              </div>
+              <p class="text-body-md font-body-md text-on-surface-variant" id="confidence-explainer">Your profile matches the selected body cluster with strong data support.</p>
+            </div>
+            <div class="border border-outline-variant rounded-xl overflow-hidden mb-xl">
+              <button class="w-full p-md flex items-center justify-between hover:bg-surface-container-low transition-colors" onclick="toggleExpand()">
+                <span class="text-title-sm font-title-sm">Why this fits?</span>
+                <span class="material-symbols-outlined transition-transform" id="expand-icon">expand_more</span>
+              </button>
+              <div class="max-h-0 overflow-hidden transition-all duration-300" id="expand-content">
+                <div class="p-md pt-0 text-body-md font-body-md text-on-surface-variant border-t border-outline-variant/50" id="why-fits-content">
+                  <ul class="space-y-sm mt-sm">
+                    <li class="flex items-start gap-xs"><span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span><span>Length: Hits just below the hip (175cm profile).</span></li>
+                    <li class="flex items-start gap-xs"><span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span><span>Chest: Relaxed drape, not restrictive.</span></li>
+                    <li class="flex items-start gap-xs"><span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span><span>Shoulder: Perfectly aligned with standard frame.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-md">
+              <button class="flex-1 bg-primary text-on-primary py-md rounded-lg font-title-sm hover:opacity-90 transition-all" id="add-recommended-size" onclick="saveRecommendation()">Add Recommended Size</button>
+              <button class="px-md py-md rounded-lg border border-outline text-on-surface-variant hover:bg-surface-container-low transition-colors" onclick="goToStep(4)"><span class="material-symbols-outlined">refresh</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="step-transition hidden p-xl" id="step-4">
+          <div class="text-center mb-xl">
+            <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-md">
+              <span class="material-symbols-outlined text-on-surface-variant text-[32px]">info</span>
+            </div>
+            <h2 class="text-headline-md font-headline-md">Limited Data Match</h2>
+            <p class="text-body-md font-body-md text-on-surface-variant mt-xs">We're still learning about this specific fabric cut.</p>
+          </div>
+          <div class="bg-surface-container-low border border-outline-variant rounded-xl p-lg mb-xl text-center">
+            <p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-xs">Brand Standard Fit</p>
+            <p class="text-headline-md font-headline-md" id="fallback-size">True to Size (M)</p>
+            <p class="text-caption font-caption text-on-surface-variant mt-sm" id="fallback-explainer">This brand generally follows standard sizing. We recommend sticking to your usual size M for the intended fit.</p>
+          </div>
+          <div class="space-y-md">
+            <button class="w-full bg-on-surface text-surface py-md rounded-lg font-title-sm hover:bg-inverse-surface transition-all" id="continue-fallback-size" onclick="saveRecommendation()">Continue with recommended size</button>
+            <button class="w-full text-primary font-label-md text-label-md hover:underline" onclick="goToStep(1)">Edit My Measurements</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Footer -->
     <footer
       class="w-full py-xl px-container-margin bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant"
@@ -1048,13 +1199,158 @@
           this.appendChild(badge);
         });
       });
+      
+      const overlay = document.getElementById("modal-overlay");
+      const modal = document.getElementById("modal-container");
+      const steps = ["step-1", "step-2", "step-3", "step-4"];
+
+      function openModal() {
+        overlay.classList.remove("pointer-events-none", "opacity-0");
+        overlay.classList.add("opacity-100");
+        modal.classList.remove("scale-95");
+        modal.classList.add("scale-100");
+        showStep(1);
+      }
+
+      function closeModal() {
+        overlay.classList.add("pointer-events-none", "opacity-0");
+        overlay.classList.remove("opacity-100");
+        modal.classList.add("scale-95");
+        modal.classList.remove("scale-100");
+      }
+
+      function showStep(stepNum) {
+        steps.forEach((stepId, idx) => {
+          const stepEl = document.getElementById(stepId);
+          if (!stepEl) return;
+          if (idx + 1 === stepNum) {
+            stepEl.classList.remove("hidden");
+          } else {
+            stepEl.classList.add("hidden");
+          }
+        });
+      }
+
+      function selectGender(gender) {
+        const menBtn = document.getElementById("gender-men-btn");
+        const womenBtn = document.getElementById("gender-women-btn");
+        if (!menBtn || !womenBtn) return;
+
+        if (gender === "Male") {
+          menBtn.classList.add("bg-surface", "text-primary", "shadow-sm", "border", "border-outline-variant");
+          menBtn.classList.remove("text-on-surface-variant");
+          womenBtn.classList.remove("bg-surface", "text-primary", "shadow-sm", "border", "border-outline-variant");
+          womenBtn.classList.add("text-on-surface-variant");
+        } else {
+          womenBtn.classList.add("bg-surface", "text-primary", "shadow-sm", "border", "border-outline-variant");
+          womenBtn.classList.remove("text-on-surface-variant");
+          menBtn.classList.remove("bg-surface", "text-primary", "shadow-sm", "border", "border-outline-variant");
+          menBtn.classList.add("text-on-surface-variant");
+        }
+      }
+
+      async function goToStep(stepNum) {
+        if (stepNum !== 2) {
+          showStep(stepNum);
+          return;
+        }
+
+        showStep(2);
+        const progressBar = document.getElementById("progress-bar");
+        if (progressBar) {
+          progressBar.style.width = "0%";
+          setTimeout(() => {
+            progressBar.style.width = "100%";
+          }, 100);
+        }
+
+        const heightCm = parseFloat(document.getElementById("height").value);
+        const weightKg = parseFloat(document.getElementById("weight").value);
+        const gender = document.getElementById("gender-women-btn").classList.contains("text-primary") ? "Female" : "Male";
+
+        if (!heightCm || !weightKg) {
+          alert("Please enter both height and weight.");
+          showStep(1);
+          return;
+        }
+
+        try {
+          const res = await fetch(MynFit.mynFitUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              height_cm: heightCm,
+              weight_kg: weightKg,
+              gender,
+              brand: PRODUCT_BRAND,
+              category: PRODUCT_CATEGORY,
+            }),
+          });
+          if (!res.ok) throw new Error("Backend error: " + res.status);
+          const data = await res.json();
+          setTimeout(() => renderResult(data), 900);
+        } catch (err) {
+          console.error(err);
+          setTimeout(() => {
+            alert("Could not reach the MynFit backend. Is it running on port 8000?");
+            showStep(1);
+          }, 300);
+        }
+      }
+
+      function renderResult(data) {
+        const isSpecificMatch =
+          data.matched_on &&
+          data.matched_on.includes("brand") &&
+          data.matched_on.includes("category");
+        const keptRate = data.stats && data.stats.kept_rate != null ? Math.round(data.stats.kept_rate * 100) : null;
+        const recSize = data.recommended_size || (data.stats && data.stats.recommended_size) || "M";
+
+        if (isSpecificMatch && keptRate !== null) {
+          document.getElementById("confidence-value").textContent = keptRate + "%";
+          document.getElementById("recommended-size").textContent = "Size " + recSize;
+          document.getElementById("confidence-explainer").textContent =
+            data.explanation ||
+            "Your profile matches the selected body cluster with strong data support.";
+          showStep(3);
+        } else {
+          document.getElementById("fallback-size").textContent = "True to Size (" + recSize + ")";
+          document.getElementById("continue-fallback-size").textContent = "Continue with Size " + recSize;
+          document.getElementById("fallback-explainer").textContent =
+            data.explanation ||
+            "Not enough data yet for your exact body type on this item — showing the general pattern instead.";
+          showStep(4);
+        }
+      }
+
+      function saveRecommendation() {
+        if (!PRODUCT_BRAND || !PRODUCT_CATEGORY) return;
+        closeModal();
+        alert("Great! Your recommended size has been selected.\nCheck the product card to confirm the fit.");
+      }
+
+      function toggleExpand() {
+        const content = document.getElementById("expand-content");
+        const icon = document.getElementById("expand-icon");
+        if (!content || !icon) return;
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+          content.style.maxHeight = "0px";
+          icon.style.transform = "rotate(0deg)";
+        } else {
+          content.style.maxHeight = "200px";
+          icon.style.transform = "rotate(180deg)";
+        }
+      }
+
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) closeModal();
+      });
 
       function selectSizeChip(size) {
-        const button = Array.from(
-          document.querySelectorAll("button.w-14"),
-        ).find((item) => item.textContent.trim().startsWith(size));
-        if (button && !button.classList.contains("cursor-not-allowed"))
-          button.click();
+        const button = Array.from(document.querySelectorAll("button.w-14")).find((item) =>
+          item.textContent.trim().startsWith(size),
+        );
+        if (button && !button.classList.contains("cursor-not-allowed")) button.click();
       }
     </script>
     <script>
