@@ -51,7 +51,7 @@ def build_prompt(brand: str, category: str, result: dict) -> str:
 def _local_fallback_sentence(result: dict, brand: str) -> str:
     """Dynamic, user-facing fallback sentence - used whenever no API key is set,
     or if the live API call fails for any reason (network issue, bad credentials,
-    rate limit, etc). Never crashes the /fit-twin endpoint, and never shows a
+    rate limit, etc). Never crashes the /mynfit endpoint, and never shows a
     developer-only placeholder string to an end user during a demo."""
     stats = result.get("stats", {})
     kept_rate = stats.get("kept_rate")
@@ -93,7 +93,7 @@ def call_llm(prompt: str, result: dict = None, brand: str = None) -> str:
         raise ValueError("Empty response from Gemini")
     except Exception:
         # network issue, bad/missing credential, rate limit, or any other API
-        # failure should never take down the /fit-twin endpoint during a demo
+        # failure should never take down the /mynfit endpoint during a demo
         if fallback_available:
             return _local_fallback_sentence(result, brand)
         return "Based on similar shoppers' outcomes, this size is likely to fit well."

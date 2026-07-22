@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="../shared/ui.css" rel="stylesheet" />
-    <title>MynFit - Find Your Fit</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <title>MynFit - Find Your Fit    <link rel=icon href=../pics/MynFit-logo.png type=image/png />
+    <link rel=apple-touch-icon href=../pics/MynFit-logo.png />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap"
       rel="stylesheet"
@@ -182,7 +183,7 @@
       .step-transition {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      .fit-twin-gradient {
+      .mynfit-gradient {
         background: linear-gradient(135deg, #b90041 0%, #fd517a 100%);
       }
     </style>
@@ -304,7 +305,7 @@
           >
             <div class="flex items-center gap-sm">
               <div
-                class="w-10 h-10 rounded-full fit-twin-gradient flex items-center justify-center"
+                class="w-10 h-10 rounded-full mynfit-gradient flex items-center justify-center"
               >
                 <span
                   class="material-symbols-outlined text-on-primary text-[20px]"
@@ -315,7 +316,7 @@
               <div>
                 <p class="text-title-sm font-title-sm">Confused about size?</p>
                 <p class="text-caption font-caption text-on-surface-variant">
-                  Let our FitTwin AI find your perfect match.
+                  Let our MynFit AI find your perfect match.
                 </p>
               </div>
             </div>
@@ -454,10 +455,10 @@
         <div class="step-transition hidden p-xl text-center py-32" id="step-2">
           <div class="relative w-24 h-24 mx-auto mb-xl">
             <div
-              class="absolute inset-0 rounded-full fit-twin-gradient animate-ping opacity-20"
+              class="absolute inset-0 rounded-full mynfit-gradient animate-ping opacity-20"
             ></div>
             <div
-              class="relative w-24 h-24 rounded-full fit-twin-gradient flex items-center justify-center text-on-primary"
+              class="relative w-24 h-24 rounded-full mynfit-gradient flex items-center justify-center text-on-primary"
             >
               <span
                 class="material-symbols-outlined text-[48px]"
@@ -749,7 +750,7 @@
       const product = MynFit.getProduct();
       const PRODUCT_BRAND = product.brand;
       const PRODUCT_CATEGORY = product.category;
-      const BACKEND_URL = MynFit.fitTwinUrl;
+      const BACKEND_URL = MynFit.mynFitUrl;
 
       let selectedGender = "Male"; // default matches the pre-selected "Men" button
 
@@ -856,7 +857,7 @@
           console.error(err);
           setTimeout(() => {
             alert(
-              "Could not reach the Fit Twin backend. Is it running on port 8000?",
+              "Could not reach the MynFit backend. Is it running on port 8000?",
             );
             showStep(1);
           }, 300);

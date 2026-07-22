@@ -3,7 +3,7 @@ One-time (or whenever you get updated data) prep script for MynFit.
 Run: python data_prep.py
 
 What it does:
-1. Loads the real FitTwin dataset
+1. Loads the original MynFit dataset
 2. Fits the body clusterer (clustering.py - KMeans per gender, with a pooled
    fallback model) and saves it to cluster_model.pkl so recommend.py can load
    it later without refitting
@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from clustering import fit_and_save
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-RAW_PATH = os.path.join(_HERE, "data", "FitTwin_Realistic_Dataset_20000.xlsx")
+RAW_PATH = os.path.join(_HERE, "data", "MynFit_Realistic_Dataset_20000.xlsx")
 CLEAN_PATH = os.path.join(_HERE, "data", "clean_fit_data.csv")
 MIN_DATA_POINTS = 15  # matches the threshold used in recommend.py's fallback ladder
 

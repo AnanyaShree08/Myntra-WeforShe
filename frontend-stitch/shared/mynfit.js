@@ -66,8 +66,8 @@
         read(STORAGE.apiBase, "http://127.0.0.1:8000")
       );
     },
-    get fitTwinUrl() {
-      return this.apiBase.replace(/\/$/, "") + "/fit-twin";
+    get mynFitUrl() {
+      return this.apiBase.replace(/\/$/, "") + "/mynfit";
     },
     getProduct,
     setProduct: (product) => write(STORAGE.product, product),

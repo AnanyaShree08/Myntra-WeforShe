@@ -2,7 +2,7 @@
 MynFit backend API.
 
 Run with: uvicorn app:app --reload
-Then open: http://127.0.0.1:8000/docs to try the /fit-twin endpoint interactively.
+Then open: http://127.0.0.1:8000/docs to try the /mynfit endpoint interactively.
 """
 
 import os
@@ -29,7 +29,7 @@ app.add_middleware(
 )
 
 
-class FitTwinRequest(BaseModel):
+class MynFitRequest(BaseModel):
     height_cm: float
     weight_kg: float
     gender: str    # "Male" or "Female" (anything else safely falls back to the pooled cluster model)
@@ -37,8 +37,8 @@ class FitTwinRequest(BaseModel):
     category: str  # e.g. "Kurti", "Jeans", "Shirt", "Dress", "Trousers", "Top"
 
 
-@app.post("/fit-twin")
-def fit_twin(req: FitTwinRequest):
+@app.post("/mynfit")
+def mynfit(req: MynFitRequest):
     if req.height_cm <= 0 or req.weight_kg <= 0:
         raise HTTPException(status_code=400, detail="height_cm and weight_kg must be positive numbers.")
     if not req.brand or not req.category:
@@ -74,4 +74,4 @@ def fit_twin(req: FitTwinRequest):
 
 @app.get("/")
 def root():
-    return {"status": "MynFit API running. POST to /fit-twin with height_cm, weight_kg, gender, brand, category."}
+    return {"status": "MynFit API running. POST to /mynfit with height_cm, weight_kg, gender, brand, category."}

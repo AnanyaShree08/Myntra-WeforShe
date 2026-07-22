@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="../shared/ui.css" rel="stylesheet" />
-    <title>MynFit | Premium Personal Styling</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <title>MynFit | Premium Personal Styling    <link rel=icon href=../pics/MynFit-logo.png type=image/png />
+    <link rel=apple-touch-icon href=../pics/MynFit-logo.png />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
@@ -382,12 +383,12 @@
               </button>
             </div>
           </section>
-          <!-- THE HERO FEATURE: FitTwin Recommendation Card -->
+          <!-- THE HERO FEATURE: MynFit Recommendation Card -->
           <section class="premium-gradient-border p-md shadow-sm">
             <div class="flex items-center gap-xs mb-sm">
               <span class="text-primary text-headline-md">✨</span>
               <h4 class="text-title-sm font-title-sm text-on-surface">
-                FitTwin Recommendation
+                MynFit Recommendation
               </h4>
             </div>
             <div class="flex flex-col md:flex-row md:items-center gap-lg">
@@ -651,7 +652,7 @@
                 >
               </div>
               <p class="text-body-md text-on-surface mb-md">
-                The fit is incredible! Thanks to the FitTwin recommendation, I
+                The fit is incredible! Thanks to the MynFit recommendation, I
                 went with an M instead of my usual L, and it fits perfectly. The
                 linen blend is so breathable and feels very high-end. Perfect
                 for summer office wear.
@@ -1057,14 +1058,14 @@
       const product = MynFit.getProduct();
       const PRODUCT_BRAND = product.brand;
       const PRODUCT_CATEGORY = product.category;
-      const BACKEND_URL = MynFit.fitTwinUrl;
+      const BACKEND_URL = MynFit.mynFitUrl;
 
       // This page has no input form (assumes a returning shopper with a saved
       // profile). Using a sample saved profile for the demo - in production this
       // would come from the logged-in user's stored measurements.
       const savedProfile = MynFit.getProfile();
 
-      async function loadFitTwinRecommendation() {
+      async function loadMynFitRecommendation() {
         const selectedSize = MynFit.getSelectedSize();
         if (selectedSize) selectSizeChip(selectedSize);
         if (!MynFit.profileIsValid(savedProfile)) {
@@ -1109,13 +1110,13 @@
           }
         } catch (err) {
           console.error(
-            "Could not reach Fit Twin backend, keeping placeholder values.",
+            "Could not reach MynFit backend, keeping placeholder values.",
             err,
           );
         }
       }
 
-      loadFitTwinRecommendation();
+      loadMynFitRecommendation();
 
       document
         .getElementById("add-to-bag")
