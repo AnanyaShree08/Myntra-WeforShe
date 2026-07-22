@@ -1,0 +1,1133 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="../shared/ui.css" rel="stylesheet" />
+    <title>MynFit | Premium Personal Styling</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#7bf8d3",
+              "inverse-surface": "#2b2f43",
+              surface: "#fbf8ff",
+              "on-primary-fixed": "#400011",
+              "inverse-primary": "#ffb2ba",
+              "surface-container-highest": "#dee1fa",
+              error: "#ba1a1a",
+              "surface-container": "#ececff",
+              "surface-bright": "#fbf8ff",
+              "on-surface": "#161b2d",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#e3bdc0",
+              "inverse-on-surface": "#efefff",
+              primary: "#b90041",
+              "surface-container-high": "#e4e7ff",
+              "on-tertiary-container": "#f5fff9",
+              "primary-fixed": "#ffd9dc",
+              "surface-tint": "#bd0043",
+              "primary-fixed-dim": "#ffb2ba",
+              "on-primary-fixed-variant": "#910031",
+              "on-tertiary-fixed": "#002118",
+              "secondary-fixed": "#ffd9dd",
+              "tertiary-container": "#008469",
+              outline: "#8f6f72",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#910035",
+              "tertiary-fixed-dim": "#5cdcb8",
+              tertiary: "#006953",
+              "on-secondary-fixed": "#400013",
+              "on-background": "#161b2d",
+              "on-secondary-container": "#5a001e",
+              "secondary-container": "#fd517a",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#00513f",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#dee1fa",
+              "surface-container-low": "#f3f2ff",
+              background: "#fbf8ff",
+              "surface-dim": "#d6d8f2",
+              "on-primary-container": "#fffbff",
+              "primary-container": "#df2457",
+              "on-primary": "#ffffff",
+              secondary: "#b8174a",
+              "on-surface-variant": "#5b4042",
+              "secondary-fixed-dim": "#ffb2bc",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              sm: "12px",
+              gutter: "16px",
+              xs: "8px",
+              md: "16px",
+              xl: "32px",
+              "container-margin": "20px",
+              lg: "24px",
+              base: "4px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "display-lg-mobile": ["Inter"],
+              "label-md": ["Inter"],
+              caption: ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "display-lg-mobile": [
+                "24px",
+                {
+                  lineHeight: "30px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              caption: ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "title-sm": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+              "display-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .premium-gradient-border {
+        position: relative;
+        background: #fff;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+        border-radius: 12px;
+      }
+      .premium-gradient-border::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: -2px;
+        border-radius: inherit;
+        background: linear-gradient(to right, #ff3f6c, #ff8c00);
+      }
+      .product-image-container::-webkit-scrollbar {
+        display: none;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+      .fill-icon {
+        font-variation-settings: "FILL" 1;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface font-body-md antialiased">
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-7xl mx-auto bg-surface dark:bg-inverse-surface shadow-sm"
+    >
+      <div class="flex items-center gap-xl">
+        <span
+          class="text-display-lg-mobile font-display-lg-mobile font-black tracking-tighter text-primary dark:text-secondary-fixed cursor-pointer"
+          onclick="location.href = '../mynfit_landing_page/code.html'"
+          >MynFit</span
+        >
+        <nav class="hidden md:flex gap-lg">
+          <a
+            class="text-on-surface dark:text-inverse-on-surface font-label-md hover:text-primary transition-colors duration-200"
+            href="../mynfit_product_listing_page/code.html"
+            >Men</a
+          >
+          <a
+            class="text-primary font-bold border-b-2 border-primary pb-1"
+            href="../mynfit_product_listing_page/code.html"
+            >Women</a
+          >
+          <a
+            class="text-on-surface dark:text-inverse-on-surface font-label-md hover:text-primary transition-colors duration-200"
+            href="../mynfit_product_listing_page/code.html"
+            >Kids</a
+          >
+          <a
+            class="text-on-surface dark:text-inverse-on-surface font-label-md hover:text-primary transition-colors duration-200"
+            href="../mynfit_product_listing_page/code.html"
+            >Home &amp; Living</a
+          >
+          <a
+            class="text-on-surface dark:text-inverse-on-surface font-label-md hover:text-primary transition-colors duration-200"
+            href="../mynfit_product_listing_page/code.html"
+            >Beauty</a
+          >
+        </nav>
+      </div>
+      <div class="flex items-center gap-md">
+        <div
+          class="hidden lg:flex items-center bg-surface-container-low px-md py-xs rounded-lg border border-outline-variant/30"
+        >
+          <span class="material-symbols-outlined text-on-surface-variant mr-xs"
+            >search</span
+          >
+          <input
+            class="bg-transparent border-none focus:ring-0 text-body-md w-64"
+            placeholder="Search for products, brands and more"
+            type="text"
+          />
+        </div>
+        <div class="flex items-center gap-md">
+          <button class="hover:text-primary transition-colors">
+            <span class="material-symbols-outlined" data-icon="person"
+              >person</span
+            >
+          </button>
+          <button class="hover:text-primary transition-colors">
+            <span class="material-symbols-outlined" data-icon="favorite"
+              >favorite</span
+            >
+          </button>
+          <button class="hover:text-primary transition-colors">
+            <span class="material-symbols-outlined" data-icon="shopping_bag"
+              >shopping_bag</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="pt-24 pb-xl max-w-7xl mx-auto px-container-margin">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+        <!-- Hero: Large product image gallery -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-2 gap-md overflow-hidden">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden shadow-sm group"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="Close-up editorial fashion photography of a high-end designer linen blazer in cream white. The lighting is soft and natural, emphasizing the rich fabric texture and precision stitching. The background is a minimalist, warm grey architectural space, maintaining a premium light-mode aesthetic with sophisticated shadows."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1VuhYy0GAzwINOU5TF51l8UfOGYB9J0JP96h6hS4PVGp0b72NT_s3idvdHB9-yOnmFd0O10VYfN3y7VM1zfCjs-5qwArwYjV2JzZ7EPTR0upzkpDLepv16BzmFPGhPDOG6LyYJ4mVVgeZO1aNFsXqm-6Ol-AurxLpTj2loZ5adRB-Sxh6XEBY5k4Zc59JUXaDzA5c9D9f6tKF30YhmRC2atPYkXhHJd9LJnBZ2-FmbDwvLwLKrXyw"
+              />
+            </div>
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden shadow-sm group"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="Full-body editorial shot of a professional model wearing a tailored cream white blazer paired with tonal trousers. The setting is a minimalist luxury boutique with high-key lighting and clean lines. The overall mood is sophisticated and expert, showcasing a modern corporate aesthetic with generous whitespace."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPip0fMDg-6CEs8y9UOVDt07sj9SsNNozlhwcrRj9ooNlSoyijrB7oz50edp9Pu4x1Z08vaerQZzaQ9q8oEbRuAwn-xZOF6toStOCCiGnIibPkwWQXgTMYNjQnw_04pNmtuu9qVEW8eLsOeAVT1saDul38JJm0NPkoYaugICXdIIlobbRhCLukf56EJ4nvea9gQvMqS8ApObgCB1fPZx-qcUYlpxD-oWGGykjrUuFL_Nja7Mhp491q"
+              />
+            </div>
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden shadow-sm group"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="Detailed close-up shot of the lapel and button detail of a premium cream blazer. The image focus is on the intricate weave of the sustainable fabric and the pearlescent quality of the buttons. High-fidelity photography with soft bokeh in a bright, modern studio environment."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJJJSPYnCS_jQ2GxyIqVJ5AilINGXIojkjQd_mj1_a9M6R_W_i6mwCRWklA2RR-Yl--72ES50ty9ftis58wPg3vCyPuA6ISrJ1sJ8ks6RBc1CqWsY5Om4tqv4ZFB3U6Clbmwz_qxaL9CJU6W-pKU9qMMWJdZxskS66LmwJmErTatUtmh1SueI7H7CtraYbQJcHNRWmRS2e5XRfSWPufvRgmpwVKfOquxUxIivLVZQ9mpkAyTfpTn56"
+              />
+            </div>
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden shadow-sm group"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="Back view of a structured fashion blazer showing the elegant drape and clean silhouette. The lighting creates subtle tonal gradients on the white fabric, set against a neutral, high-end gallery background that reflects professional personal styling."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx8-L563EmD5Zm1yVtRpxyc0bk1_7MXWgP_A6AKjW2sY8zuFdugnv4G_-fMwIMaXefmRvJG1veX7c2XrCo4VHuLzraJEd5RR5lzO-PWy6BQNA7VDMEcv5tPsE9Z3uxuC6_z_csmh7mGks0FEW9jSX1NxIer6FDhZJqOoqAJi6R2bSFtVUvagjrFTVsibvNiw5-ZH8bgTmdPlmmad6Im5NfCy4eW5RJgvwxym4UxZd5rWd5nYXmKjNu"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Details Section -->
+        <div class="lg:col-span-5 flex flex-col gap-lg">
+          <section>
+            <h2
+              class="text-headline-md font-headline-md text-on-surface-variant mb-base"
+            >
+              ESSENTIA LUXE
+            </h2>
+            <h1 class="text-display-lg font-display-lg text-on-surface mb-md">
+              Tailored Linen-Blend Sculpted Blazer
+            </h1>
+            <div
+              class="flex items-center gap-md border border-outline-variant/30 w-fit px-md py-xs rounded-lg bg-surface-container-lowest"
+            >
+              <div class="flex items-center gap-xs text-secondary font-bold">
+                <span>4.8</span>
+                <span class="material-symbols-outlined fill-icon text-[18px]"
+                  >star</span
+                >
+              </div>
+              <div class="w-[1px] h-4 bg-outline-variant"></div>
+              <span class="text-on-surface-variant font-label-md"
+                >1.2k Ratings</span
+              >
+            </div>
+          </section>
+          <hr class="border-outline-variant/20" />
+          <section class="flex flex-col gap-xs">
+            <div class="flex items-baseline gap-md">
+              <span class="text-display-lg font-display-lg">₹8,495</span>
+              <span
+                class="text-title-sm font-title-sm text-on-surface-variant line-through"
+                >₹12,995</span
+              >
+              <span class="text-primary font-bold text-title-sm"
+                >(35% OFF)</span
+              >
+            </div>
+            <p class="text-tertiary font-bold text-label-md">
+              Inclusive of all taxes
+            </p>
+          </section>
+          <!-- Size Section -->
+          <section class="flex flex-col gap-md">
+            <div class="flex justify-between items-center">
+              <h3 class="text-title-sm font-title-sm uppercase tracking-wider">
+                Select Size
+              </h3>
+              <button
+                class="text-primary font-bold text-label-md hover:underline"
+              >
+                SIZE CHART
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-md">
+              <!-- Size Chips -->
+              <button
+                class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface hover:border-on-surface transition-colors"
+              >
+                S
+              </button>
+              <button
+                class="w-14 h-14 rounded-lg border-2 border-on-surface flex items-center justify-center font-bold text-on-surface relative"
+              >
+                M
+                <div
+                  class="absolute -top-2 -right-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full shadow-sm"
+                >
+                  SELECTED
+                </div>
+              </button>
+              <button
+                class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface hover:border-on-surface transition-colors"
+              >
+                L
+              </button>
+              <button
+                class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface hover:border-on-surface transition-colors"
+              >
+                XL
+              </button>
+              <button
+                class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface-variant opacity-40 cursor-not-allowed relative overflow-hidden"
+              >
+                XXL
+                <div
+                  class="absolute inset-0 bg-transparent flex items-center justify-center"
+                >
+                  <div
+                    class="w-full h-[1px] bg-outline-variant rotate-45"
+                  ></div>
+                </div>
+              </button>
+            </div>
+          </section>
+          <!-- THE HERO FEATURE: FitTwin Recommendation Card -->
+          <section class="premium-gradient-border p-md shadow-sm">
+            <div class="flex items-center gap-xs mb-sm">
+              <span class="text-primary text-headline-md">✨</span>
+              <h4 class="text-title-sm font-title-sm text-on-surface">
+                FitTwin Recommendation
+              </h4>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center gap-lg">
+              <div class="flex-1">
+                <div class="flex items-baseline gap-xs mb-xs">
+                  <span class="text-body-md text-on-surface-variant"
+                    >Recommended Size:</span
+                  >
+                  <span
+                    class="text-headline-md font-bold text-on-surface"
+                    id="pdp-recommended-size"
+                    >M</span
+                  >
+                </div>
+                <div class="flex items-center gap-xs">
+                  <div
+                    class="h-2 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-gradient-to-right from-primary to-secondary rounded-full"
+                      id="pdp-confidence-bar"
+                      style="width: 92%"
+                    ></div>
+                  </div>
+                  <span
+                    class="text-label-md font-bold text-on-surface"
+                    id="pdp-confidence-value"
+                    >92% Confidence</span
+                  >
+                </div>
+              </div>
+              <div
+                class="w-[1px] h-12 bg-outline-variant hidden md:block"
+              ></div>
+              <div class="flex-1">
+                <p class="text-body-md text-on-surface-variant italic">
+                  "92% of shoppers with your body profile kept this size. Size L
+                  was reported as 'Too Loose'."
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Actions -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-sm mt-lg">
+            <button
+              onclick="
+                location.href = '../mynfit_recommendation_flow/code.html'
+              "
+              class="min-h-[56px] px-md py-md rounded-xl border-2 border-primary text-primary text-label-md font-bold tracking-wide flex items-center justify-center gap-xs whitespace-nowrap hover:bg-primary/5 transition-all"
+            >
+              <span class="material-symbols-outlined text-[20px]"
+                >straighten</span
+              >
+              FIND YOUR FIT
+            </button>
+            <button
+              id="add-to-bag"
+              class="min-h-[56px] px-md py-md rounded-xl bg-primary text-white text-label-md font-bold tracking-wide flex items-center justify-center gap-xs whitespace-nowrap shadow-md shadow-primary/20 hover:brightness-90 transition-all active:scale-95"
+            >
+              <span
+                class="material-symbols-outlined text-[20px] fill-icon"
+                data-icon="shopping_bag"
+                >shopping_bag</span
+              >
+              ADD TO BAG
+            </button>
+            <button
+              class="min-h-[56px] px-md py-md rounded-xl border border-outline text-on-surface text-label-md font-bold tracking-wide flex items-center justify-center gap-xs whitespace-nowrap hover:bg-surface-container-low hover:border-on-surface transition-all active:scale-95"
+            >
+              <span
+                class="material-symbols-outlined text-[20px]"
+                data-icon="favorite"
+                >favorite</span
+              >
+              WISHLIST
+            </button>
+          </div>
+          <!-- Delivery Check -->
+          <section class="mt-md bg-surface-container-low p-md rounded-xl">
+            <div class="flex items-center justify-between mb-md">
+              <div class="flex items-center gap-sm">
+                <span
+                  class="material-symbols-outlined text-on-surface-variant"
+                  data-icon="local_shipping"
+                  >local_shipping</span
+                >
+                <h4 class="text-title-sm font-title-sm">DELIVERY OPTIONS</h4>
+              </div>
+            </div>
+            <div
+              class="flex border border-outline-variant rounded-lg overflow-hidden mb-sm focus-within:border-on-surface transition-colors"
+            >
+              <input
+                class="flex-1 px-md py-sm bg-transparent border-none focus:ring-0 text-body-md"
+                placeholder="Enter Pincode"
+                type="text"
+              />
+              <button
+                class="px-md font-bold text-primary text-label-md hover:bg-primary/5 transition-colors"
+              >
+                CHECK
+              </button>
+            </div>
+            <div
+              class="flex flex-col gap-xs text-caption text-on-surface-variant"
+            >
+              <p>
+                Please enter PIN code to check delivery time &amp; Pay on
+                Delivery Availability
+              </p>
+              <ul class="flex flex-col gap-xs mt-sm">
+                <li class="flex items-center gap-xs">
+                  <span class="material-symbols-outlined text-[16px]"
+                    >verified</span
+                  >
+                  100% Original Products
+                </li>
+                <li class="flex items-center gap-xs">
+                  <span class="material-symbols-outlined text-[16px]"
+                    >swap_horiz</span
+                  >
+                  Easy 14 days returns and exchanges
+                </li>
+                <li class="flex items-center gap-xs">
+                  <span class="material-symbols-outlined text-[16px]"
+                    >payments</span
+                  >
+                  Try &amp; Buy might be available
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Product Reviews Section -->
+      <section class="mt-xl pt-xl border-t border-outline-variant/20">
+        <div class="flex flex-col lg:flex-row gap-xl">
+          <div class="lg:w-1/3">
+            <h3 class="text-headline-md font-headline-md mb-lg">
+              Ratings &amp; Reviews
+            </h3>
+            <div class="flex items-center gap-xl mb-xl">
+              <div class="flex flex-col items-center">
+                <div class="flex items-center gap-xs">
+                  <span class="text-[48px] font-black leading-none">4.8</span>
+                  <span
+                    class="material-symbols-outlined fill-icon text-secondary text-[32px]"
+                    >star</span
+                  >
+                </div>
+                <span class="text-body-md text-on-surface-variant mt-xs"
+                  >1.2k Verified Buyers</span
+                >
+              </div>
+              <div class="flex-1 flex flex-col gap-xs">
+                <div class="flex items-center gap-md">
+                  <span class="w-2 text-label-md">5</span>
+                  <div
+                    class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-tertiary w-[85%]"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-md">
+                  <span class="w-2 text-label-md">4</span>
+                  <div
+                    class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-tertiary w-[10%]"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-md">
+                  <span class="w-2 text-label-md">3</span>
+                  <div
+                    class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-tertiary-fixed-dim w-[3%]"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-md">
+                  <span class="w-2 text-label-md">2</span>
+                  <div
+                    class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-error-container w-[1%]"></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-md">
+                  <span class="w-2 text-label-md">1</span>
+                  <div
+                    class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-error w-[1%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container-low p-md rounded-xl">
+              <h4
+                class="text-title-sm font-title-sm mb-md uppercase tracking-widest text-[10px]"
+              >
+                What Customers Say
+              </h4>
+              <div class="flex flex-col gap-md">
+                <div class="flex justify-between items-center">
+                  <span class="text-body-md">True to Size</span>
+                  <div class="flex gap-base">
+                    <span
+                      class="px-md py-1 bg-tertiary text-white text-[10px] rounded-full font-bold"
+                      >PERFECT (88%)</span
+                    >
+                  </div>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-body-md">Fabric Quality</span>
+                  <div class="flex gap-base">
+                    <span
+                      class="px-md py-1 bg-tertiary text-white text-[10px] rounded-full font-bold"
+                      >PREMIUM (94%)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-2/3 flex flex-col gap-xl">
+            <div class="border-b border-outline-variant/10 pb-lg">
+              <div class="flex items-center gap-md mb-md">
+                <div
+                  class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center font-bold text-primary"
+                >
+                  AR
+                </div>
+                <div>
+                  <p class="text-title-sm font-bold">Ananya R.</p>
+                  <div class="flex text-secondary text-[12px]">
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                  </div>
+                </div>
+                <span class="ml-auto text-caption text-on-surface-variant"
+                  >2 days ago</span
+                >
+              </div>
+              <p class="text-body-md text-on-surface mb-md">
+                The fit is incredible! Thanks to the FitTwin recommendation, I
+                went with an M instead of my usual L, and it fits perfectly. The
+                linen blend is so breathable and feels very high-end. Perfect
+                for summer office wear.
+              </p>
+              <div class="flex gap-sm">
+                <div
+                  class="w-20 h-24 bg-surface-container-low rounded-lg overflow-hidden"
+                >
+                  <img
+                    class="w-full h-full object-cover grayscale-50"
+                    data-alt="User generated photo of the cream linen blazer draped over a chair in a sunlit room. Real-world texture and lighting."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI7mFnFwtYITv_dSbtu3gv_S1bOZsQGmRXk7f-qwSzQskwhXV2dV5jun9Me4W3lY_DM50gUeI2pVQSZuIhyNPdUQx6HyqWPOGhtFjXF37JkqynB536mgH1KqUJFKRmoogXiGY5tracySiSG435QSqtC6HUJsNoOrWGeC5LDa_65Fw8q8Za62vGNd9EA5w8YfrI7kWRWcOTuWe9cvu6CiptGotwERnEoi1f1cxUmwgegu62nJ3oAu35"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-outline-variant/10 pb-lg">
+              <div class="flex items-center gap-md mb-md">
+                <div
+                  class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center font-bold text-primary"
+                >
+                  MS
+                </div>
+                <div>
+                  <p class="text-title-sm font-bold">Meera S.</p>
+                  <div class="flex text-secondary text-[12px]">
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined fill-icon text-[14px]"
+                      >star</span
+                    >
+                    <span class="material-symbols-outlined text-[14px]"
+                      >star</span
+                    >
+                  </div>
+                </div>
+                <span class="ml-auto text-caption text-on-surface-variant"
+                  >1 week ago</span
+                >
+              </div>
+              <p class="text-body-md text-on-surface mb-md">
+                Beautiful blazer, very structured and professional. A bit long
+                for my height, but the sleeves are perfect. Color is a bit more
+                'off-white' than pure white which I actually prefer.
+              </p>
+            </div>
+            <button
+              class="text-primary font-bold text-label-md self-start hover:underline"
+            >
+              View All 428 Reviews
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Similar Products -->
+      <section class="mt-xl pt-xl border-t border-outline-variant/20">
+        <h3
+          class="text-headline-md font-headline-md mb-xl uppercase tracking-wider"
+        >
+          Similar Products
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-lg">
+          <!-- Product Card 1 -->
+          <div class="flex flex-col gap-sm group cursor-pointer">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden relative shadow-sm transition-shadow hover:shadow-md"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="A minimalist soft beige tailored vest in a premium linen fabric. Clean editorial fashion lighting on a neutral grey background. Modern corporate styling for women."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_J3iq11RjXJWTeYIWWtt544PNuHQHsIZu7dwzHIkWAo7GKC5Jjpuj326cOQw0fSsCSfBg-P_rWZHU8MuFXhoKz7omWXd3-K08hAS9Ebxt2LlM37RPXtVYwCxfGSSSk3UW-f0M6FT7jiblv7V68jwVRnsRER7K0-WIrhHakmRGU7dRb2UfA2jdPxxcqzmCNh95zTpvaS1voI6awwugkCosBjf5l_KsRgrsLsOBJQxrtbOfTwspybU"
+              />
+              <div
+                class="absolute bottom-md left-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs shadow-sm"
+              >
+                <span class="text-label-md font-bold">4.6</span>
+                <span
+                  class="material-symbols-outlined fill-icon text-secondary text-[14px]"
+                  >star</span
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-label-md font-bold uppercase truncate">
+                ESSENTIA LUXE
+              </h4>
+              <p class="text-body-md text-on-surface-variant truncate">
+                Tailored Linen Vest
+              </p>
+              <div class="flex items-baseline gap-xs mt-xs">
+                <span class="text-title-sm font-bold">₹3,295</span>
+                <span class="text-caption text-on-surface-variant line-through"
+                  >₹4,995</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 2 -->
+          <div class="flex flex-col gap-sm group cursor-pointer">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden relative shadow-sm transition-shadow hover:shadow-md"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="High-waisted wide-leg trousers in a coordinating cream linen fabric. Elegant drapery and minimalist design. Set in a luxury fashion studio environment with bright, diffused light."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTfj1YoAAVOZF5IMDOMgKmL2AyUHbjyZj4iMmVzGsjxZ8wfozrMqTpdl6bR8jkWL_02cRm81jvGe2YpNy6ed6M4qq_tD_zVEFR_qMYH7S_n1jIYWywdZrajW6VoeycdFIPgchdWxyypGE8dv_8Mr55EeZtK68wUXjQzBPb9kZhwcGPmlrXqbUQ-ec9O1X-UG5AA_MiZzr_TNIRGmHq617BtDyMwNH_pHa-TGKUL6soP98z6tLfcmdF"
+              />
+              <div
+                class="absolute bottom-md left-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs shadow-sm"
+              >
+                <span class="text-label-md font-bold">4.9</span>
+                <span
+                  class="material-symbols-outlined fill-icon text-secondary text-[14px]"
+                  >star</span
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-label-md font-bold uppercase truncate">
+                ESSENTIA LUXE
+              </h4>
+              <p class="text-body-md text-on-surface-variant truncate">
+                Wide-Leg Linen Trousers
+              </p>
+              <div class="flex items-baseline gap-xs mt-xs">
+                <span class="text-title-sm font-bold">₹4,495</span>
+                <span class="text-caption text-on-surface-variant line-through"
+                  >₹5,995</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 3 -->
+          <div class="flex flex-col gap-sm group cursor-pointer">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden relative shadow-sm transition-shadow hover:shadow-md"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="A structured double-breasted blazer in a subtle sand-colored weave. Expert tailoring details visible. Soft lighting against a minimalist architectural background, premium editorial vibe."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU3p03SNZZ8JGCP08BN-tHdL_WaWoSKxz7_bYJ_4tV0gRoeQ42ZJha4vMoWL6duxh5eVh347QAckqkvEFy6d-gPqQbUAmJX0X_41JCK5NDGeH1-vD0slk4yVIzDYbasL5DaNTwvl9hsU010adQGh4kjRosZQ3-AZ7t2h0E0Ro7Qe4YOhGF92IMSJBUWnC9TYSngxbQJ66wsvsYkH5jUQuOAU0dBGuslcewP3fZRvzN95BSWu4wSoXd"
+              />
+              <div
+                class="absolute bottom-md left-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs shadow-sm"
+              >
+                <span class="text-label-md font-bold">4.5</span>
+                <span
+                  class="material-symbols-outlined fill-icon text-secondary text-[14px]"
+                  >star</span
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-label-md font-bold uppercase truncate">
+                STYLE THEORY
+              </h4>
+              <p class="text-body-md text-on-surface-variant truncate">
+                Structured Sand Blazer
+              </p>
+              <div class="flex items-baseline gap-xs mt-xs">
+                <span class="text-title-sm font-bold">₹7,195</span>
+                <span class="text-caption text-on-surface-variant line-through"
+                  >₹9,995</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 4 -->
+          <div class="flex flex-col gap-sm group cursor-pointer">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden relative shadow-sm transition-shadow hover:shadow-md"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="Minimalist silk camisole in ivory, designed for layering under blazers. High-fidelity textile photography with focus on the smooth sheen and delicate straps. Pristine studio setting."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaQ6Ez6oxwiyus-GOn6ho_pcEop8WoQqVCyAPRLufYckHu0-G4NQGAThGmu5WyogPDNXvmVXzDsU6O3abQu-8xnyTS_nTFk57-JCplFnUHer4tbeiATnD4MVTjcRDPu8UIC2pSfk_h_GCBrhnWFkk94uZ_bZ_AJjejaC9jGyIuV91N4kceSPDDS0ulN9IkNZufQOQhWC1cb3d4KTsWe9uKDU8SAXFGXV6HfcVQ6emdulKcLKyJZ71T"
+              />
+              <div
+                class="absolute bottom-md left-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs shadow-sm"
+              >
+                <span class="text-label-md font-bold">4.7</span>
+                <span
+                  class="material-symbols-outlined fill-icon text-secondary text-[14px]"
+                  >star</span
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-label-md font-bold uppercase truncate">
+                SILK &amp; CO
+              </h4>
+              <p class="text-body-md text-on-surface-variant truncate">
+                Luxe Silk Layering Camisole
+              </p>
+              <div class="flex items-baseline gap-xs mt-xs">
+                <span class="text-title-sm font-bold">₹1,995</span>
+                <span class="text-caption text-on-surface-variant line-through"
+                  >₹2,495</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 5 -->
+          <div class="flex flex-col gap-sm group cursor-pointer">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-xl overflow-hidden relative shadow-sm transition-shadow hover:shadow-md"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="A short sleeve structured linen top in white. Minimalist design with clean seams and professional finish. Set against a high-key, modern white backdrop."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvlVagbnbqi09V8wStvQikW0Icov7ZCFQhic9QaTtriJSYCJ90YICXR20g4UvXQ6xtLv4qfB6MW1LSaH3hWHrDnz_iND0OlOe9XSh8sNe7gKD4MfmdgjY5JVNjBIqTQiRBOqM27xJFWJHVdKkXdxvRiW985m3tYkFd3DrlJNoUJNc6Gj-cJtsxuCdQHnL6Zo-53JJr7ls0Re23JTDz0FZXfo11tElk22NmYTI5hdmtXTh9hEMrr6eH"
+              />
+              <div
+                class="absolute bottom-md left-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs shadow-sm"
+              >
+                <span class="text-label-md font-bold">4.4</span>
+                <span
+                  class="material-symbols-outlined fill-icon text-secondary text-[14px]"
+                  >star</span
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-label-md font-bold uppercase truncate">
+                ESSENTIA LUXE
+              </h4>
+              <p class="text-body-md text-on-surface-variant truncate">
+                Short Sleeve Linen Top
+              </p>
+              <div class="flex items-baseline gap-xs mt-xs">
+                <span class="text-title-sm font-bold">₹2,295</span>
+                <span class="text-caption text-on-surface-variant line-through"
+                  >₹3,495</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-xl px-container-margin bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant"
+    >
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-lg">
+        <div class="flex flex-col gap-md">
+          <span
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-widest"
+            >Shop</span
+          >
+          <div class="flex flex-col gap-xs">
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="../mynfit_product_listing_page/code.html"
+              >Men</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="../mynfit_product_listing_page/code.html"
+              >Women</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="../mynfit_product_listing_page/code.html"
+              >Kids</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="../mynfit_product_listing_page/code.html"
+              >Home &amp; Living</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="../mynfit_product_listing_page/code.html"
+              >Beauty</a
+            >
+          </div>
+        </div>
+        <div class="flex flex-col gap-md">
+          <span
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-widest"
+            >Support</span
+          >
+          <div class="flex flex-col gap-xs">
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Help Center</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Contact Us</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Track Orders</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Shipping</a
+            >
+          </div>
+        </div>
+        <div class="flex flex-col gap-md">
+          <span
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-widest"
+            >Legal</span
+          >
+          <div class="flex flex-col gap-xs">
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Terms of Use</a
+            >
+            <a
+              class="text-on-surface-variant hover:text-primary transition-colors text-body-md"
+              href="#"
+              >Privacy Policy</a
+            >
+          </div>
+        </div>
+        <div class="flex flex-col gap-md">
+          <span
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-widest"
+            >Connect</span
+          >
+          <div class="flex gap-md">
+            <span
+              class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors"
+              data-icon="facebook"
+              >face_nod</span
+            >
+            <span
+              class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors"
+              data-icon="instagram"
+              >camera</span
+            >
+            <span
+              class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors"
+              data-icon="twitter"
+              >alternate_email</span
+            >
+          </div>
+          <div class="mt-md">
+            <p class="text-caption text-on-surface-variant leading-relaxed">
+              © 2026 MynFit. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../shared/mynfit.js"></script>
+    <script>
+      // Micro-interaction for size chip selection
+      document.querySelectorAll("button.w-14").forEach((button) => {
+        button.addEventListener("click", function () {
+          if (this.classList.contains("cursor-not-allowed")) return;
+
+          // Clear other selections
+          document.querySelectorAll("button.w-14").forEach((b) => {
+            b.classList.remove("border-2", "border-on-surface");
+            b.classList.add("border", "border-outline-variant");
+            const badge = b.querySelector(".absolute");
+            if (badge) badge.remove();
+          });
+
+          // Set this one
+          this.classList.remove("border", "border-outline-variant");
+          this.classList.add("border-2", "border-on-surface");
+
+          const badge = document.createElement("div");
+          badge.className =
+            "absolute -top-2 -right-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full shadow-sm";
+          badge.innerText = "SELECTED";
+          this.appendChild(badge);
+        });
+      });
+
+      function selectSizeChip(size) {
+        const button = Array.from(
+          document.querySelectorAll("button.w-14"),
+        ).find((item) => item.textContent.trim().startsWith(size));
+        if (button && !button.classList.contains("cursor-not-allowed"))
+          button.click();
+      }
+    </script>
+    <script>
+      // Product context for this page (would come from the actual product being viewed).
+      const product = MynFit.getProduct();
+      const PRODUCT_BRAND = product.brand;
+      const PRODUCT_CATEGORY = product.category;
+      const BACKEND_URL = MynFit.fitTwinUrl;
+
+      // This page has no input form (assumes a returning shopper with a saved
+      // profile). Using a sample saved profile for the demo - in production this
+      // would come from the logged-in user's stored measurements.
+      const savedProfile = MynFit.getProfile();
+
+      async function loadFitTwinRecommendation() {
+        const selectedSize = MynFit.getSelectedSize();
+        if (selectedSize) selectSizeChip(selectedSize);
+        if (!MynFit.profileIsValid(savedProfile)) {
+          document.getElementById("pdp-confidence-value").textContent =
+            "Use Find Your Fit for a prediction";
+          return;
+        }
+        try {
+          const res = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              height_cm: savedProfile.height_cm,
+              weight_kg: savedProfile.weight_kg,
+              gender: savedProfile.gender,
+              brand: PRODUCT_BRAND,
+              category: PRODUCT_CATEGORY,
+            }),
+          });
+          if (!res.ok) throw new Error("Backend error: " + res.status);
+          const data = await res.json();
+
+          const keptRate =
+            data.stats && data.stats.kept_rate != null
+              ? Math.round(data.stats.kept_rate * 100)
+              : null;
+          const recSize =
+            data.stats && data.stats.recommended_size
+              ? data.stats.recommended_size
+              : null;
+          if (keptRate !== null) {
+            document.getElementById("pdp-confidence-value").textContent =
+              keptRate + "% Confidence";
+            document.getElementById("pdp-confidence-bar").style.width =
+              keptRate + "%";
+          }
+          if (recSize) {
+            document.getElementById("pdp-recommended-size").textContent =
+              recSize;
+            MynFit.setSelectedSize(recSize);
+            selectSizeChip(recSize);
+          }
+        } catch (err) {
+          console.error(
+            "Could not reach Fit Twin backend, keeping placeholder values.",
+            err,
+          );
+        }
+      }
+
+      loadFitTwinRecommendation();
+
+      document
+        .getElementById("add-to-bag")
+        .addEventListener("click", function () {
+          const size = MynFit.getSelectedSize();
+          if (!size) {
+            alert("Choose a size or complete Find Your Fit first.");
+            return;
+          }
+          this.lastChild.textContent = " ADDED: SIZE " + size;
+          this.disabled = true;
+        });
+    </script>
+  </body>
+</html>

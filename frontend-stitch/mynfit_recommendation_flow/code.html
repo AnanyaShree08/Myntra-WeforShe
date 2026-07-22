@@ -1,0 +1,939 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="../shared/ui.css" rel="stylesheet" />
+    <title>MynFit - Find Your Fit</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb2ba",
+              "primary-container": "#df2457",
+              "on-secondary-fixed": "#400013",
+              secondary: "#b8174a",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#fffbff",
+              "on-tertiary-container": "#f5fff9",
+              "on-error-container": "#93000a",
+              error: "#ba1a1a",
+              "surface-variant": "#dee1fa",
+              "on-tertiary-fixed-variant": "#00513f",
+              "surface-dim": "#d6d8f2",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#fbf8ff",
+              outline: "#8f6f72",
+              "surface-container-high": "#e4e7ff",
+              "error-container": "#ffdad6",
+              primary: "#b90041",
+              tertiary: "#006953",
+              "on-tertiary-fixed": "#002118",
+              "tertiary-container": "#008469",
+              "on-surface": "#161b2d",
+              "tertiary-fixed": "#7bf8d3",
+              "secondary-fixed-dim": "#ffb2bc",
+              "surface-container-highest": "#dee1fa",
+              "on-primary": "#ffffff",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#ffd9dd",
+              "outline-variant": "#e3bdc0",
+              "surface-container": "#ececff",
+              "inverse-surface": "#2b2f43",
+              "inverse-primary": "#ffb2ba",
+              "on-secondary-fixed-variant": "#910035",
+              "surface-container-low": "#f3f2ff",
+              "on-background": "#161b2d",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#5cdcb8",
+              surface: "#fbf8ff",
+              "on-primary-fixed-variant": "#910031",
+              "surface-tint": "#bd0043",
+              "on-primary-fixed": "#400011",
+              "secondary-container": "#fd517a",
+              "primary-fixed": "#ffd9dc",
+              "on-surface-variant": "#5b4042",
+              "on-secondary-container": "#5a001e",
+              background: "#fbf8ff",
+              "inverse-on-surface": "#efefff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              xl: "32px",
+              md: "16px",
+              sm: "12px",
+              gutter: "16px",
+              xs: "8px",
+              "container-margin": "20px",
+              lg: "24px",
+              base: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "display-lg-mobile": ["Inter"],
+              "body-md": ["Inter"],
+              "title-sm": ["Inter"],
+              caption: ["Inter"],
+              "body-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "display-lg": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "display-lg-mobile": [
+                "24px",
+                {
+                  lineHeight: "30px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "title-sm": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+              caption: ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "display-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fbf8ff;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .active-dot {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          #f3f2ff 25%,
+          #e4e7ff 50%,
+          #f3f2ff 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .step-transition {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fit-twin-gradient {
+        background: linear-gradient(135deg, #b90041 0%, #fd517a 100%);
+      }
+    </style>
+  </head>
+  <body class="text-on-surface">
+    <!-- Top Navigation Anchor -->
+    <header
+      class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex justify-between items-center px-gutter max-w-7xl mx-auto left-0 right-0"
+    >
+      <div
+        class="text-display-lg-mobile font-black tracking-tighter text-primary cursor-pointer"
+        onclick="location.href = '../mynfit_landing_page/code.html'"
+      >
+        MynFit
+      </div>
+      <nav class="hidden md:flex gap-lg items-center">
+        <a
+          class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md"
+          href="../mynfit_product_listing_page/code.html"
+          >Men</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md hover:text-primary transition-colors"
+          href="../mynfit_product_listing_page/code.html"
+          >Women</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md hover:text-primary transition-colors"
+          href="../mynfit_product_listing_page/code.html"
+          >Kids</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md hover:text-primary transition-colors"
+          href="../mynfit_product_listing_page/code.html"
+          >Home &amp; Living</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md hover:text-primary transition-colors"
+          href="../mynfit_product_listing_page/code.html"
+          >Beauty</a
+        >
+      </nav>
+      <div class="flex items-center gap-md">
+        <span
+          class="material-symbols-outlined text-on-surface-variant cursor-pointer"
+          >favorite</span
+        >
+        <span
+          class="material-symbols-outlined text-on-surface-variant cursor-pointer"
+          >shopping_bag</span
+        >
+        <span
+          class="material-symbols-outlined text-on-surface-variant cursor-pointer"
+          >person</span
+        >
+      </div>
+    </header>
+    <!-- Main Content Area (Background) -->
+    <main
+      class="pt-32 pb-xl px-container-margin max-w-7xl mx-auto min-h-screen"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+        <div
+          class="rounded-xl overflow-hidden bg-surface-container-low aspect-[4/5]"
+        >
+          <img
+            class="w-full h-full object-cover"
+            data-alt="High-end studio photography of a premium cotton t-shirt in a soft rose quartz color. The fabric texture is clearly visible, draped over an invisible mannequin to show a modern, slightly oversized fit. The lighting is soft and directional, creating subtle shadows that emphasize the high-quality garment construction. Minimalist white background for a clean editorial look."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYGBHg35XsfYyGoMEbl5320aiT9jIygfLcZmMDsNahCBpl_HkGZgv_Kes1ZAu1dB_4NmC5PbQhJCe4BeQWLWGI2jG1yeUVy8qXjqLi9p20l50UpedZewU6xi2iZqxA9fKmBTRBwz5BCxSMiNn2D2relKH7sw-brmYJAllJz6YEUMTW1CD_k3SPRXrnkJDRYTP9xEj6oENErPal5-ZqPG2w5qwqliLmF6NT08ePwoX5c-A7CYMiwY0r"
+          />
+        </div>
+        <div class="flex flex-col justify-center gap-md">
+          <span
+            class="text-label-md font-label-md text-primary tracking-widest uppercase"
+            >Premium Essentials</span
+          >
+          <h1 class="text-display-lg font-display-lg text-on-surface">
+            Relaxed Fit Supima Tee
+          </h1>
+          <div class="flex items-baseline gap-xs">
+            <span class="text-headline-md font-headline-md text-on-surface"
+              >₹1,299</span
+            >
+            <span
+              class="text-body-md font-body-md text-on-surface-variant line-through"
+              >₹2,499</span
+            >
+            <span class="text-label-md font-label-md text-secondary"
+              >(48% OFF)</span
+            >
+          </div>
+          <div class="mt-md">
+            <h3 class="text-title-sm font-title-sm mb-xs">Select Size</h3>
+            <div class="flex gap-xs">
+              <button
+                class="w-12 h-12 rounded-lg border border-outline flex items-center justify-center font-label-md text-label-md hover:border-primary transition-colors"
+              >
+                S
+              </button>
+              <button
+                class="w-12 h-12 rounded-lg border-2 border-primary flex items-center justify-center font-label-md text-label-md text-primary bg-surface-container-lowest"
+              >
+                M
+              </button>
+              <button
+                class="w-12 h-12 rounded-lg border border-outline flex items-center justify-center font-label-md text-label-md hover:border-primary transition-colors"
+              >
+                L
+              </button>
+              <button
+                class="w-12 h-12 rounded-lg border border-outline flex items-center justify-center font-label-md text-label-md hover:border-primary transition-colors"
+              >
+                XL
+              </button>
+            </div>
+          </div>
+          <div
+            class="p-md rounded-xl bg-surface-container flex items-center justify-between border border-primary/20"
+          >
+            <div class="flex items-center gap-sm">
+              <div
+                class="w-10 h-10 rounded-full fit-twin-gradient flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-on-primary text-[20px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >straighten</span
+                >
+              </div>
+              <div>
+                <p class="text-title-sm font-title-sm">Confused about size?</p>
+                <p class="text-caption font-caption text-on-surface-variant">
+                  Let our FitTwin AI find your perfect match.
+                </p>
+              </div>
+            </div>
+            <button
+              class="px-md py-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 transition-all"
+              onclick="openModal()"
+            >
+              Find My Fit
+            </button>
+          </div>
+          <div class="flex gap-md mt-md">
+            <button
+              class="flex-1 bg-primary text-on-primary py-md rounded-lg font-title-sm flex items-center justify-center gap-xs"
+            >
+              <span class="material-symbols-outlined">shopping_bag</span> Add to
+              Bag
+            </button>
+            <button
+              class="px-md py-md rounded-lg border border-outline font-title-sm flex items-center justify-center hover:bg-surface-container-low transition-colors"
+            >
+              <span class="material-symbols-outlined">favorite</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Modal Backdrop -->
+    <div
+      class="fixed inset-0 z-[100] bg-on-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-container-margin"
+      id="modal-overlay"
+    >
+      <!-- Modal Container -->
+      <div
+        class="bg-surface w-full max-w-md rounded-xl shadow-xl overflow-hidden relative transform scale-95 transition-transform duration-300"
+        id="modal-container"
+      >
+        <button
+          class="absolute top-md right-md z-10 text-on-surface-variant hover:text-on-surface"
+          onclick="closeModal()"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <!-- Step 1: Input -->
+        <div class="step-transition block p-xl" id="step-1">
+          <div class="text-center mb-xl">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-fixed mb-md"
+            >
+              <span
+                class="material-symbols-outlined text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >person_pin</span
+              >
+            </div>
+            <h2 class="text-headline-md font-headline-md">
+              Find Your Perfect Fit
+            </h2>
+            <p class="text-body-md font-body-md text-on-surface-variant mt-xs">
+              Precision sizing powered by millions of shoppers.
+            </p>
+          </div>
+          <div class="space-y-lg">
+            <!-- Gender Toggle -->
+            <div>
+              <label
+                class="text-label-md font-label-md text-on-surface-variant mb-xs block"
+                >Gender</label
+              >
+              <div class="flex p-1 bg-surface-container rounded-lg gap-1">
+                <button
+                  class="flex-1 py-xs rounded-md bg-surface text-primary font-title-sm shadow-sm border border-outline-variant"
+                  id="gender-men-btn"
+                  onclick="selectGender('Male')"
+                >
+                  Men
+                </button>
+                <button
+                  class="flex-1 py-xs rounded-md text-on-surface-variant font-title-sm hover:bg-surface-container-high"
+                  id="gender-women-btn"
+                  onclick="selectGender('Female')"
+                >
+                  Women
+                </button>
+              </div>
+            </div>
+            <!-- Measurement Inputs -->
+            <div class="grid grid-cols-2 gap-md">
+              <div>
+                <label
+                  class="text-label-md font-label-md text-on-surface-variant mb-xs block"
+                  for="height"
+                  >Height (cm)</label
+                >
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]"
+                    >height</span
+                  >
+                  <input
+                    class="w-full pl-xl pr-md py-md rounded-lg border border-outline bg-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    id="height"
+                    placeholder="175"
+                    type="number"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="text-label-md font-label-md text-on-surface-variant mb-xs block"
+                  for="weight"
+                  >Weight (kg)</label
+                >
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]"
+                    >weight</span
+                  >
+                  <input
+                    class="w-full pl-xl pr-md py-md rounded-lg border border-outline bg-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    id="weight"
+                    placeholder="70"
+                    type="number"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-full bg-primary text-on-primary py-md rounded-lg font-title-sm hover:opacity-90 transition-all shadow-md"
+              onclick="goToStep(2)"
+            >
+              Calculate Recommendation
+            </button>
+          </div>
+        </div>
+        <!-- Step 2: Processing -->
+        <div class="step-transition hidden p-xl text-center py-32" id="step-2">
+          <div class="relative w-24 h-24 mx-auto mb-xl">
+            <div
+              class="absolute inset-0 rounded-full fit-twin-gradient animate-ping opacity-20"
+            ></div>
+            <div
+              class="relative w-24 h-24 rounded-full fit-twin-gradient flex items-center justify-center text-on-primary"
+            >
+              <span
+                class="material-symbols-outlined text-[48px]"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >psychology</span
+              >
+            </div>
+          </div>
+          <h2 class="text-title-sm font-title-sm text-primary mb-xs">
+            Analyzing 2.4M purchase outcomes...
+          </h2>
+          <p class="text-body-md font-body-md text-on-surface-variant mb-xl">
+            Matching your profile with shoppers like you.
+          </p>
+          <div
+            class="w-full h-1 bg-surface-container rounded-full overflow-hidden"
+          >
+            <div
+              class="h-full bg-primary w-0 transition-all duration-[3000ms] ease-out"
+              id="progress-bar"
+            ></div>
+          </div>
+        </div>
+        <!-- Step 3: High Confidence Results -->
+        <div class="step-transition hidden" id="step-3">
+          <div class="p-xl bg-primary-fixed/20 border-b border-primary/10">
+            <div class="flex items-center justify-between mb-md">
+              <div class="flex items-center gap-xs">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >verified</span
+                >
+                <span
+                  class="text-headline-md font-headline-md text-primary"
+                  id="confidence-badge-label"
+                  >High Confidence Match</span
+                >
+              </div>
+              <span
+                class="text-headline-md font-headline-md text-primary"
+                id="confidence-value"
+                >94%</span
+              >
+            </div>
+            <div class="flex items-baseline gap-sm">
+              <span
+                class="text-[56px] font-black text-on-surface leading-none"
+                id="recommended-size"
+                >Size M</span
+              >
+              <span class="text-body-md font-body-md text-on-surface-variant"
+                >Recommended for you</span
+              >
+            </div>
+          </div>
+          <div class="p-xl">
+            <div class="flex gap-md mb-xl">
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-on-surface-variant"
+                  >group</span
+                >
+              </div>
+              <p
+                class="text-body-md font-body-md text-on-surface-variant"
+                id="confidence-explainer"
+              >
+                <span class="font-bold text-on-surface">94% of shoppers</span>
+                with your body profile kept this size and didn't return it for
+                fit issues.
+              </p>
+            </div>
+            <div
+              class="border border-outline-variant rounded-xl overflow-hidden mb-xl"
+            >
+              <button
+                class="w-full p-md flex items-center justify-between hover:bg-surface-container-low transition-colors"
+                onclick="toggleExpand()"
+              >
+                <span class="text-title-sm font-title-sm">Why this fits?</span>
+                <span
+                  class="material-symbols-outlined transition-transform"
+                  id="expand-icon"
+                  >expand_more</span
+                >
+              </button>
+              <div
+                class="max-h-0 overflow-hidden transition-all duration-300"
+                id="expand-content"
+              >
+                <div
+                  class="p-md pt-0 text-body-md font-body-md text-on-surface-variant border-t border-outline-variant/50"
+                  id="why-fits-content"
+                >
+                  <ul class="space-y-sm mt-sm">
+                    <li class="flex items-start gap-xs">
+                      <span
+                        class="material-symbols-outlined text-tertiary text-[18px]"
+                        >check_circle</span
+                      >
+                      <span
+                        >Length: Hits just below the hip (175cm profile).</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-xs">
+                      <span
+                        class="material-symbols-outlined text-tertiary text-[18px]"
+                        >check_circle</span
+                      >
+                      <span>Chest: Relaxed drape, not restrictive.</span>
+                    </li>
+                    <li class="flex items-start gap-xs">
+                      <span
+                        class="material-symbols-outlined text-tertiary text-[18px]"
+                        >check_circle</span
+                      >
+                      <span
+                        >Shoulder: Perfectly aligned with standard frame.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-md">
+              <button
+                class="flex-1 bg-primary text-on-primary py-md rounded-lg font-title-sm hover:opacity-90 transition-all"
+                id="add-recommended-size"
+                onclick="saveRecommendation()"
+              >
+                Add Recommended Size
+              </button>
+              <button
+                class="px-md py-md rounded-lg border border-outline text-on-surface-variant hover:bg-surface-container-low transition-colors"
+                onclick="goToStep(4)"
+              >
+                <span class="material-symbols-outlined">refresh</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4: Fallback State -->
+        <div class="step-transition hidden p-xl" id="step-4">
+          <div class="text-center mb-xl">
+            <div
+              class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-md"
+            >
+              <span
+                class="material-symbols-outlined text-on-surface-variant text-[32px]"
+                >info</span
+              >
+            </div>
+            <h2 class="text-headline-md font-headline-md">
+              Limited Data Match
+            </h2>
+            <p class="text-body-md font-body-md text-on-surface-variant mt-xs">
+              We're still learning about this specific fabric cut.
+            </p>
+          </div>
+          <div
+            class="bg-surface-container-low border border-outline-variant rounded-xl p-lg mb-xl text-center"
+          >
+            <p
+              class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-xs"
+            >
+              Brand Standard Fit
+            </p>
+            <p class="text-headline-md font-headline-md" id="fallback-size">
+              True to Size (M)
+            </p>
+            <p
+              class="text-caption font-caption text-on-surface-variant mt-sm"
+              id="fallback-explainer"
+            >
+              This brand generally follows standard sizing. We recommend
+              sticking to your usual size M for the intended fit.
+            </p>
+          </div>
+          <div class="space-y-md">
+            <button
+              class="w-full bg-on-surface text-surface py-md rounded-lg font-title-sm hover:bg-inverse-surface transition-all"
+              id="continue-fallback-size"
+              onclick="saveRecommendation()"
+            >
+              Continue with recommended size
+            </button>
+            <button
+              class="w-full text-primary font-label-md text-label-md hover:underline"
+              onclick="goToStep(1)"
+            >
+              Edit My Measurements
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Anchor -->
+    <footer class="bg-surface-container-low mt-xl">
+      <div
+        class="w-full py-xl px-container-margin grid grid-cols-2 md:grid-cols-4 gap-lg max-w-7xl mx-auto"
+      >
+        <div>
+          <h4
+            class="text-brand-logo font-title-sm text-on-surface mb-md uppercase tracking-wider"
+          >
+            MynFit
+          </h4>
+          <p class="text-body-md font-body-md text-on-surface-variant">
+            Elevating your personal style with data-driven precision.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-label-md font-label-md text-on-surface mb-md">
+            Customer Service
+          </h4>
+          <ul
+            class="space-y-xs text-body-md font-body-md text-on-surface-variant"
+          >
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Help Center
+            </li>
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Contact Us
+            </li>
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Track Orders
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-label-md font-label-md text-on-surface mb-md">
+            Legal
+          </h4>
+          <ul
+            class="space-y-xs text-body-md font-body-md text-on-surface-variant"
+          >
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Terms of Use
+            </li>
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Privacy Policy
+            </li>
+            <li class="hover:text-primary cursor-pointer transition-colors">
+              Shipping
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-label-md font-label-md text-on-surface mb-md">
+            Experience
+          </h4>
+          <div class="flex gap-sm">
+            <div
+              class="w-8 h-8 rounded bg-on-surface text-surface flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined text-[20px]"
+                >phone_iphone</span
+              >
+            </div>
+            <div
+              class="w-8 h-8 rounded bg-on-surface text-surface flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined text-[20px]">devices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-container-margin py-md border-t border-outline-variant text-center"
+      >
+        <p
+          class="text-label-md font-label-md text-on-surface-variant opacity-70"
+        >
+          © 2026 MynFit. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="../shared/mynfit.js"></script>
+    <script>
+      const overlay = document.getElementById("modal-overlay");
+      const modal = document.getElementById("modal-container");
+      const steps = ["step-1", "step-2", "step-3", "step-4"];
+
+      // Product context for this page. In a real app this would come from
+      // the product being viewed (e.g. passed in via URL or page data).
+      // Must match brand/category values that exist in the backend dataset.
+      const product = MynFit.getProduct();
+      const PRODUCT_BRAND = product.brand;
+      const PRODUCT_CATEGORY = product.category;
+      const BACKEND_URL = MynFit.fitTwinUrl;
+
+      let selectedGender = "Male"; // default matches the pre-selected "Men" button
+
+      function selectGender(gender) {
+        selectedGender = gender;
+        const menBtn = document.getElementById("gender-men-btn");
+        const womenBtn = document.getElementById("gender-women-btn");
+        const activeClasses = [
+          "bg-surface",
+          "text-primary",
+          "shadow-sm",
+          "border",
+          "border-outline-variant",
+        ];
+        const inactiveClasses = ["text-on-surface-variant"];
+
+        if (gender === "Male") {
+          menBtn.classList.add(...activeClasses);
+          menBtn.classList.remove(...inactiveClasses);
+          womenBtn.classList.remove(...activeClasses);
+          womenBtn.classList.add(...inactiveClasses);
+        } else {
+          womenBtn.classList.add(...activeClasses);
+          womenBtn.classList.remove(...inactiveClasses);
+          menBtn.classList.remove(...activeClasses);
+          menBtn.classList.add(...inactiveClasses);
+        }
+      }
+
+      function openModal() {
+        overlay.classList.remove("pointer-events-none", "opacity-0");
+        overlay.classList.add("opacity-100");
+        modal.classList.remove("scale-95");
+        modal.classList.add("scale-100");
+        goToStep(1);
+      }
+
+      function closeModal() {
+        overlay.classList.add("pointer-events-none", "opacity-0");
+        overlay.classList.remove("opacity-100");
+        modal.classList.add("scale-95");
+        modal.classList.remove("scale-100");
+      }
+
+      function showStep(stepNum) {
+        steps.forEach((s, idx) => {
+          const el = document.getElementById(s);
+          if (idx + 1 === stepNum) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        });
+      }
+
+      async function goToStep(stepNum) {
+        // Step 1 -> 2 triggers the real calculation. Steps 3/4 are chosen
+        // by the backend response, not hardcoded.
+        if (stepNum !== 2) {
+          showStep(stepNum);
+          return;
+        }
+
+        showStep(2);
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = "0%";
+        setTimeout(() => {
+          progressBar.style.width = "100%";
+        }, 100);
+
+        const heightCm = parseFloat(document.getElementById("height").value);
+        const weightKg = parseFloat(document.getElementById("weight").value);
+
+        if (!heightCm || !weightKg) {
+          alert("Please enter both height and weight.");
+          showStep(1);
+          return;
+        }
+        MynFit.setProfile({
+          height_cm: heightCm,
+          weight_kg: weightKg,
+          gender: selectedGender,
+        });
+
+        try {
+          const res = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              height_cm: heightCm,
+              weight_kg: weightKg,
+              gender: selectedGender,
+              brand: PRODUCT_BRAND,
+              category: PRODUCT_CATEGORY,
+            }),
+          });
+
+          if (!res.ok) throw new Error("Backend error: " + res.status);
+          const data = await res.json();
+
+          // keep the processing animation visible briefly so it doesn't flash
+          setTimeout(() => renderResult(data), 900);
+        } catch (err) {
+          console.error(err);
+          setTimeout(() => {
+            alert(
+              "Could not reach the Fit Twin backend. Is it running on port 8000?",
+            );
+            showStep(1);
+          }, 300);
+        }
+      }
+
+      function renderResult(data) {
+        const isSpecificMatch =
+          data.matched_on &&
+          data.matched_on.includes("brand") &&
+          data.matched_on.includes("category");
+        const keptRate =
+          data.stats && data.stats.kept_rate != null
+            ? Math.round(data.stats.kept_rate * 100)
+            : null;
+        const recSize =
+          data.recommended_size ||
+          (data.stats && data.stats.recommended_size) ||
+          "--";
+        MynFit.setSelectedSize(recSize);
+
+        if (isSpecificMatch && keptRate !== null) {
+          document.getElementById("confidence-value").textContent =
+            keptRate + "%";
+          document.getElementById("recommended-size").textContent =
+            "Size " + recSize;
+          document.getElementById("confidence-explainer").innerHTML =
+            '<span class="font-bold text-on-surface">' +
+            keptRate +
+            "% of shoppers</span> " +
+            "with your body profile kept size " +
+            recSize +
+            " and didn't return it for fit issues.";
+          document.getElementById("why-fits-content").innerHTML =
+            '<p class="mt-sm">' +
+            (data.explanation || "") +
+            "</p>" +
+            (data.stats.common_return_reason
+              ? '<p class="mt-sm text-caption">Most common reason others returned a different size: ' +
+                data.stats.common_return_reason +
+                "</p>"
+              : "");
+          showStep(3);
+        } else {
+          document.getElementById("fallback-size").textContent =
+            "True to Size (" + recSize + ")";
+          document.getElementById("continue-fallback-size").textContent =
+            "Continue with Size " + recSize;
+          document.getElementById("fallback-explainer").textContent =
+            data.explanation ||
+            "Not enough data yet for your exact body type on this item — showing the general pattern instead.";
+          showStep(4);
+        }
+      }
+
+      function saveRecommendation() {
+        const size = MynFit.getSelectedSize();
+        if (!size) return;
+        MynFit.openProduct(MynFit.getProduct());
+      }
+
+      function toggleExpand() {
+        const content = document.getElementById("expand-content");
+        const icon = document.getElementById("expand-icon");
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+          content.style.maxHeight = "0px";
+          icon.style.transform = "rotate(0deg)";
+        } else {
+          content.style.maxHeight = "200px";
+          icon.style.transform = "rotate(180deg)";
+        }
+      }
+
+      // Close on backdrop click
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal();
+      });
+    </script>
+  </body>
+</html>

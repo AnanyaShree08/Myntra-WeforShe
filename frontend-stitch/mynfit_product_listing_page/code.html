@@ -1,0 +1,1118 @@
+<!doctype html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="../shared/ui.css" rel="stylesheet" />
+    <title>MynFit | Premium Casual Wear</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .fit-twin-gradient {
+        background: linear-gradient(135deg, #b90041 0%, #7bf8d3 100%);
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      /* Custom scrollbar for better editorial feel */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fbf8ff;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #dee1fa;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #bd0043;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#7bf8d3",
+              "inverse-surface": "#2b2f43",
+              surface: "#fbf8ff",
+              "on-primary-fixed": "#400011",
+              "inverse-primary": "#ffb2ba",
+              "surface-container-highest": "#dee1fa",
+              error: "#ba1a1a",
+              "surface-container": "#ececff",
+              "surface-bright": "#fbf8ff",
+              "on-surface": "#161b2d",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#e3bdc0",
+              "inverse-on-surface": "#efefff",
+              primary: "#b90041",
+              "surface-container-high": "#e4e7ff",
+              "on-tertiary-container": "#f5fff9",
+              "primary-fixed": "#ffd9dc",
+              "surface-tint": "#bd0043",
+              "primary-fixed-dim": "#ffb2ba",
+              "on-primary-fixed-variant": "#910031",
+              "on-tertiary-fixed": "#002118",
+              "secondary-fixed": "#ffd9dd",
+              "tertiary-container": "#008469",
+              outline: "#8f6f72",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#910035",
+              "tertiary-fixed-dim": "#5cdcb8",
+              tertiary: "#006953",
+              "on-secondary-fixed": "#400013",
+              "on-background": "#161b2d",
+              "on-secondary-container": "#5a001e",
+              "secondary-container": "#fd517a",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#00513f",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#dee1fa",
+              "surface-container-low": "#f3f2ff",
+              background: "#fbf8ff",
+              "surface-dim": "#d6d8f2",
+              "on-primary-container": "#fffbff",
+              "primary-container": "#df2457",
+              "on-primary": "#ffffff",
+              secondary: "#b8174a",
+              "on-surface-variant": "#5b4042",
+              "secondary-fixed-dim": "#ffb2bc",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              sm: "12px",
+              gutter: "16px",
+              xs: "8px",
+              md: "16px",
+              xl: "32px",
+              "container-margin": "20px",
+              lg: "24px",
+              base: "4px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "display-lg-mobile": ["Inter"],
+              "label-md": ["Inter"],
+              caption: ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "display-lg-mobile": [
+                "24px",
+                {
+                  lineHeight: "30px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              caption: ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "title-sm": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+              "display-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+    <!-- Top Navigation Bar -->
+    <header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16">
+      <div
+        class="max-w-7xl mx-auto px-gutter h-full flex justify-between items-center"
+      >
+        <div class="flex items-center gap-xl">
+          <a
+            class="text-display-lg font-black tracking-tighter text-primary"
+            href="../mynfit_landing_page/code.html"
+            >MynFit</a
+          >
+          <nav class="hidden md:flex gap-lg">
+            <a
+              class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md"
+              href="#"
+              >Men</a
+            >
+            <a
+              class="text-on-surface hover:text-primary transition-colors font-label-md text-label-md"
+              href="#"
+              >Women</a
+            >
+            <a
+              class="text-on-surface hover:text-primary transition-colors font-label-md text-label-md"
+              href="#"
+              >Kids</a
+            >
+            <a
+              class="text-on-surface hover:text-primary transition-colors font-label-md text-label-md"
+              href="#"
+              >Home & Living</a
+            >
+            <a
+              class="text-on-surface hover:text-primary transition-colors font-label-md text-label-md"
+              href="#"
+              >Beauty</a
+            >
+          </nav>
+        </div>
+        <div class="flex-1 max-w-md mx-xl hidden lg:block">
+          <div class="relative group">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-lg py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary transition-all"
+              placeholder="Search for products, brands and more"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-lg">
+          <button
+            class="flex flex-col items-center text-on-surface hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[10px] font-bold uppercase">Profile</span>
+          </button>
+          <button
+            class="flex flex-col items-center text-on-surface hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="text-[10px] font-bold uppercase">Wishlist</span>
+          </button>
+          <button
+            class="flex flex-col items-center text-on-surface hover:text-primary transition-colors relative"
+          >
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="text-[10px] font-bold uppercase">Bag</span>
+            <span
+              class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center"
+              >3</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+    <main
+      class="w-full min-w-0 pt-20 pb-24 md:pt-24 md:pb-xl max-w-7xl mx-auto px-gutter flex flex-col md:flex-row gap-lg"
+    >
+      <!-- Sidebar Filters -->
+      <aside class="w-full md:w-64 flex-shrink-0 hidden md:block">
+        <div class="sticky top-24 space-y-xl">
+          <div
+            class="flex justify-between items-center border-b border-outline-variant pb-md"
+          >
+            <h2
+              class="font-headline-md text-headline-md uppercase tracking-wider text-[14px]"
+            >
+              Filters
+            </h2>
+            <button class="text-primary font-bold text-label-md uppercase">
+              Clear All
+            </button>
+          </div>
+          <!-- Categories -->
+          <div>
+            <h3 class="font-title-sm text-title-sm mb-md">Categories</h3>
+            <div class="space-y-xs">
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >Casual Shirts (4.2k)</span
+                >
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >Summer Dresses (2.1k)</span
+                >
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >Chinos (1.5k)</span
+                >
+              </label>
+            </div>
+          </div>
+          <!-- Brand Filter -->
+          <div class="pt-lg border-t border-outline-variant">
+            <h3 class="font-title-sm text-title-sm mb-md">Brand</h3>
+            <div class="space-y-xs max-h-48 overflow-y-auto pr-xs">
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >Roadster</span
+                >
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >H&M</span
+                >
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >Mast & Harbour</span
+                >
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer group">
+                <input
+                  class="rounded border-outline-variant text-primary focus:ring-primary"
+                  type="checkbox"
+                />
+                <span
+                  class="text-body-md group-hover:text-primary transition-colors"
+                  >WROGN</span
+                >
+              </label>
+            </div>
+          </div>
+          <!-- Price Range -->
+          <div class="pt-lg border-t border-outline-variant">
+            <h3 class="font-title-sm text-title-sm mb-md">Price</h3>
+            <div class="space-y-xs">
+              <label class="flex items-center gap-xs cursor-pointer">
+                <input
+                  class="text-primary focus:ring-primary border-outline-variant"
+                  name="price"
+                  type="radio"
+                />
+                <span class="text-body-md">₹499 to ₹1499</span>
+              </label>
+              <label class="flex items-center gap-xs cursor-pointer">
+                <input
+                  class="text-primary focus:ring-primary border-outline-variant"
+                  name="price"
+                  type="radio"
+                />
+                <span class="text-body-md">₹1499 to ₹2999</span>
+              </label>
+            </div>
+          </div>
+          <!-- Size -->
+          <div class="pt-lg border-t border-outline-variant">
+            <h3 class="font-title-sm text-title-sm mb-md">Size</h3>
+            <div class="grid grid-cols-4 gap-xs">
+              <button
+                class="w-10 h-10 border border-outline-variant rounded-lg text-body-md flex items-center justify-center hover:border-primary hover:text-primary transition-all"
+              >
+                S
+              </button>
+              <button
+                class="w-10 h-10 bg-on-surface text-surface rounded-lg text-body-md flex items-center justify-center"
+              >
+                M
+              </button>
+              <button
+                class="w-10 h-10 border border-outline-variant rounded-lg text-body-md flex items-center justify-center hover:border-primary hover:text-primary transition-all"
+              >
+                L
+              </button>
+              <button
+                class="w-10 h-10 border border-outline-variant rounded-lg text-body-md flex items-center justify-center hover:border-primary hover:text-primary transition-all"
+              >
+                XL
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- Product Listing Grid -->
+      <div class="flex-1 min-w-0 w-full">
+        <div
+          class="flex flex-col items-start gap-md mb-lg sm:flex-row sm:items-center sm:justify-between sm:mb-xl"
+        >
+          <div>
+            <h1 class="text-headline-md font-headline-md text-on-surface">
+              Casual Wear Collections
+            </h1>
+            <p class="text-body-md text-on-surface-variant">- 12,482 items</p>
+          </div>
+          <div class="relative inline-block text-left">
+            <button
+              class="w-full sm:w-auto flex items-center justify-between gap-xs border border-outline-variant px-lg py-sm rounded-lg hover:bg-surface-container transition-colors"
+            >
+              <span class="text-body-md font-bold">Sort by: Recommended</span>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+          </div>
+        </div>
+        <!-- Grid -->
+        <div
+          class="grid w-full min-w-0 grid-cols-2 lg:grid-cols-4 gap-md lg:gap-lg"
+        >
+          <!-- Product Card 1 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_recommendation_flow/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Professional high-fidelity fashion photography of a young male model wearing a premium navy blue slim-fit casual cotton shirt with a button-down collar. The background is a clean, minimalist studio setting with soft directional lighting that emphasizes the fabric texture. The mood is sophisticated and expert, aligned with a high-end personal styling concierge aesthetic."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsGs_ubUpNfokU6cjAjVvwprVXF5Co5kiG23BJrdFMBh2qQloZiTcoencFIka81HhRYHVsNBLdapESH-Z_5gJuIt_-lE1mbzuKcYwHFRLPTgI1qPLZes1jVxU-tF8hKc5TOzzAzYboVaM4JPWnlpDwrgJ3YM7NtUt1kXFQ8l50HeZrV9nk0MObIzKvHfHfBh69RW8nUO5rRrTnjKuY8OBZul0-uv9CkpOLWJex3yKk64wA9wBH8eY5"
+              />
+              <!-- MinFit Badge -->
+              <div
+                class="absolute top-3 left-3 myn-fit-gradient px-3 py-1 rounded-full flex items-center gap-1 shadow-lg"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sync_alt</span
+                >
+                <span
+                  class="text-[10px] font-bold text-white uppercase tracking-tighter"
+                  >MynFit Compatible</span
+                >
+              </div>
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">
+                  Roadster Premium
+                </h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.2
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Slim Fit Casual Cotton Shirt
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹1,499</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹2,499</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(40% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 2 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="A woman wearing a tailored cream blazer and matching trousers in a bright, minimalist boutique."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPip0fMDg-6CEs8y9UOVDt07sj9SsNNozlhwcrRj9ooNlSoyijrB7oz50edp9Pu4x1Z08vaerQZzaQ9q8oEbRuAwn-xZOF6toStOCCiGnIibPkwWQXgTMYNjQnw_04pNmtuu9qVEW8eLsOeAVT1saDul38JJm0NPkoYaugICXdIIlobbRhCLukf56EJ4nvea9gQvMqS8ApObgCB1fPZx-qcUYlpxD-oWGGykjrUuFL_Nja7Mhp491q"
+              />
+              <div
+                class="absolute top-3 left-3 min-fit-gradient px-3 py-1 rounded-full flex items-center gap-1 shadow-lg"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sync_alt</span
+                >
+                <span
+                  class="text-[10px] font-bold text-white uppercase tracking-tighter"
+                  >MynFit Compatible</span
+                >
+              </div>
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">
+                  Zara Essentials
+                </h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.5
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Tailored Linen Blend Blazer
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹8,495</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹10,999</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(23% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 3 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="High-end studio shot of a classic white oxford shirt displayed on an invisible mannequin to showcase the precise tailoring and high-quality weave. Minimalist gray background with soft edge lighting. The aesthetic is clean, professional, and corporate modern, focusing on clarity and whitespace to convey expert craftsmanship and trustworthy style."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnLbSoK_VZ4GuA8-OC5Pl8WSOGe9rDJssdVBKQKeE-yRnqP37ndwOivWYd31FsupCxXwoJxiQWptDAMuMoT-WFAcVJYtwDJknaKXYmiu0zGYoklPJ5_IlX-aovbwNufx0-5BbqT2VhwcYg9ax0Y3Q_b2mAa1v8udNp4jS2rILpVvo8tk4RWQN1Vk0dpaQuPQVApbJxAByCTYEe2u4VfIJ3aEoBaBvmSHEeinmm48ztGBrqUMiKuiih"
+              />
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">
+                  Mast & Harbour
+                </h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.0
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Classic White Oxford Shirt
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹1,199</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹1,999</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(40% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 4 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Professional editorial photography of a female model wearing an elegant emerald green satin wrap dress. The lighting is dramatic and moody, utilizing soft shadows to create a high-fidelity, premium fashion magazine look. The setting is a sophisticated modern loft with concrete textures, providing a minimalist yet rich visual background that makes the product pop."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2YoRvjIqDQI7e0OWk47KHT6POJwhBLydL7VLU8uvkSOMRoqSSCaQvLi0_flXzhq4Johd3VJsKIUg522I69fpOMvSr_9UwKRycY_08Uu6lpAvSArgolKy2YgwtTR4c-KBukak35TyA_2orLXj5UR4UxKiTDKMhTktx1hk87ke_TtmWlIPk9DyRUQDiyUIZYnbrRTXB-Iz8u5LLD1HgQ8gzNn-TI5MuL1ihvCl0RpX5M4MVEcVf-k-o"
+              />
+              <div
+                class="absolute top-3 left-3 myn-fit-gradient px-3 py-1 rounded-full flex items-center gap-1 shadow-lg"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sync_alt</span
+                >
+                <span
+                  class="text-[10px] font-bold text-white uppercase tracking-tighter"
+                  >MynFit Compatible</span
+                >
+              </div>
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">WROGN Women</h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.8
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Satin Wrap Party Dress
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹3,299</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹5,499</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(40% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Repeat Pattern for more items to show 4x2 grid -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="High-quality lifestyle shot of olive green tapered chino trousers worn by a male model in an urban park setting. The lighting is warm golden hour sunlight, creating long soft shadows. The image focuses on the fit and the premium quality of the fabric, reflecting the effortless discovery and personal styling concierge brand personality."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBhz5ByWYqxbuU9tORMMfpMLvXp5u0KGh1R3a0L_TLLbiuuoAFuqgGK0etfNoihdKpDSkbpbhhopptdh9zTE4KLB3p4FBS7AvZ_-efUqao86yUH7KHgK77i6C1i3AUDXvaAN42IOuKK64H_L08qRiYvK8iw3aTVxV9H_nva4LilzR0wMrAq-n_j4Yw8PbjMSPJtbidRAG8Ml8X7nx_kZh2j1zXhwKJ52gl9WGE7PwAsgQWV-6mhmn8"
+              />
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">Roadster</h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.1
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Cotton Tapered Chinos
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹1,299</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹2,199</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(41% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 6 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Detailed close-up shot of a charcoal gray polo shirt with a subtle piqué texture. The model is standing in a modern architectural corridor with clean lines and high-end materials like marble and glass. The lighting is sophisticated and multi-layered, providing depth and a sense of luxury. The overall aesthetic is corporate modern and minimalist."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRXymBQCoqPBVpCZTeg_rxkstdcm-hTfAfiJO4zzhnof0PUqPc4sNcysFW-in2aiIEKxpezZ4tjraKocGxAM59HKxOQ8mZPIrJSpknYnebE6n7ZI0plAViYJ65Z68c-GH1E8YwEYJylVlYBEUnjiJBfoE74WUy8vSeS_7qYxp6JxN4zslmmSz0Gc2ao7Rg5T-dEXoOQpLQAZ_BseWViHeZh9Tje6UUbp0qoTS23cS3DS2ryknWvmGu"
+              />
+              <div
+                class="absolute top-3 left-3 myn-fit-gradient px-3 py-1 rounded-full flex items-center gap-1 shadow-lg"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sync_alt</span
+                >
+                <span
+                  class="text-[10px] font-bold text-white uppercase tracking-tighter"
+                  >MynFit Compatible</span
+                >
+              </div>
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">US Polo Assn</h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.6
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Texture Pique Polo Shirt
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹1,799</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹2,999</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(40% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 7 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="An editorial fashion shot of a woman in a pastel blue pleated skirt and white silk blouse. The lighting is soft and diffused, creating an airy and light-mode feel. The setting is a minimalist white studio with artistic floral arrangements in the background. The visual style is premium and sophisticated, emphasizing the fluidity and fit of the clothing."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz26G90Zs_3s5DVcFkTvNKRCHHmyiyrri6tren2BxVJ597TLO9Yv1PchOfIedvxkqMNTTB3_YKTrjL7RYu92IjOOiPdrYTM8td1YFFDL7WPWUhf-q6d6Th1EBzhtOfN7swlfbkBJk2_VNUCdTh9PZZMdMo6vX2rjf-oUAEi-UY-jReR6glbmDBhZp6C4GdnBch3kUm2I4wwgpx2w93ziVy7sIDEr7jKQrWlogEJjewScTo_4A0-Dg3"
+              />
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">Mango</h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.4
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                High-Waist Pleated Skirt
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹2,299</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹3,499</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(34% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 8 -->
+          <div
+            class="group relative bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onclick="location.href = '../mynfit_product_detail_page/code.html'"
+          >
+            <div
+              class="relative h-64 sm:h-80 overflow-hidden bg-surface-container"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="Modern studio photograph of a young model wearing black high-performance activewear leggings and a matching sports bra. The background is a clean, neutral-toned gym studio with architectural lighting that highlights the athletic fit and fabric technology. The mood is expert and trustworthy, signaling a professional sports-grade product with personal styling appeal."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIAvPyn3Z8srDcKA1BegX49SSEfXQpNt82kUxi96HTDPwa1ZHMKZzY1WLFF8Q3XlbrM2Tj6-e7u5xO4HGGZuXO3OhrA4Bhuc4P7B_7QwFYF0zO9n2IovhAMLeGZKIEBCDIOICvoAuYR21INDLGqRwZTAxeBBsoC8WnULCfB31HKyQ88Jfin4dMijItv_mVBreXklau6PRpe1dOhd437_ohLMc0g6ukRdD_Ya-kox_qXiaNSmPPFQBy"
+              />
+              <div
+                class="absolute top-3 left-3 myn-fit-gradient px-3 py-1 rounded-full flex items-center gap-1 shadow-lg"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sync_alt</span
+                >
+                <span
+                  class="text-[10px] font-bold text-white uppercase tracking-tighter"
+                  >MynFit Compatible</span
+                >
+              </div>
+              <button
+                class="absolute bottom-3 right-3 bg-white/90 backdrop-blur p-2 rounded-full shadow-md text-on-surface hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+              >
+                <span class="material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="p-md">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-on-surface truncate">
+                  Nike Sportswear
+                </h3>
+                <div
+                  class="flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded text-[10px] font-bold"
+                >
+                  4.9
+                  <span
+                    class="material-symbols-outlined text-[12px] text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+              </div>
+              <p class="text-body-md text-on-surface-variant truncate mb-2">
+                Dri-FIT Training Tights
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface">₹3,499</span>
+                <span class="text-caption line-through text-on-surface-variant"
+                  >₹4,999</span
+                >
+                <span class="text-[10px] font-bold text-primary"
+                  >(30% OFF)</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="mt-xl flex items-center justify-center gap-md">
+          <button
+            class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors"
+          >
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <div class="flex gap-xs">
+            <button
+              class="w-10 h-10 rounded-full bg-primary text-white font-bold"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-full text-on-surface hover:bg-surface-container transition-colors"
+            >
+              2
+            </button>
+            <button
+              class="w-10 h-10 rounded-full text-on-surface hover:bg-surface-container transition-colors"
+            >
+              3
+            </button>
+            <span
+              class="w-10 h-10 flex items-center justify-center text-on-surface-variant"
+              >...</span
+            >
+            <button
+              class="w-10 h-10 rounded-full text-on-surface hover:bg-surface-container transition-colors"
+            >
+              45
+            </button>
+          </div>
+          <button
+            class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors"
+          >
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-xl px-container-margin bg-surface-container-low border-t border-outline-variant"
+    >
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-lg">
+        <div class="space-y-md">
+          <h4
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-wider"
+          >
+            Online Shopping
+          </h4>
+          <ul class="space-y-xs">
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="../mynfit_product_listing_page/code.html"
+                >Men</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="../mynfit_product_listing_page/code.html"
+                >Women</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="../mynfit_product_listing_page/code.html"
+                >Kids</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="../mynfit_product_listing_page/code.html"
+                >Home & Living</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-md">
+          <h4
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-wider"
+          >
+            Customer Policies
+          </h4>
+          <ul class="space-y-xs">
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="#"
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="#"
+                >FAQ</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="#"
+                >T&C</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-on-surface-variant text-label-md hover:text-primary transition-colors"
+                href="#"
+                >Track Orders</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-md">
+          <h4
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-wider"
+          >
+            Experience MynFit
+          </h4>
+          <div class="flex flex-col gap-sm">
+            <div class="flex items-center gap-xs">
+              <span class="material-symbols-outlined text-primary"
+                >smartphone</span
+              >
+              <span class="text-label-md text-on-surface-variant"
+                >Download our app for better fit predictions</span
+              >
+            </div>
+            <div class="flex gap-xs">
+              <img
+                alt="Google Play"
+                class="h-10 cursor-pointer"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeZ_CufDWdHbAXR2XovLDoGmbecHw_f2kpH7Nfo4BAMGb8lxXSb8vT6d8ZEI6UzSNRcAblbkW9113RWDkiPMf_kUE1y2J3exbYdh3UtQcGeYwx9W10kWblz02vW3FwyPzuCk3jsgr0f2EdpENYpMq-TVoVnf4_3hgmS64dW4Lku7Dv3AOaum08S5j4kE8HvVLu1XaKfvf0XWQcYKT2RRknXItvWp8TAggMi3oG7PReQ3z_YCwI0KNv"
+              />
+              <img
+                alt="App Store"
+                class="h-10 cursor-pointer"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnnP0g9-tLJ9Y9BoyHDZNFK2dzv0iYjQoayLpmUOFWAf53YwyDkfr2vbG-Qx2Ho1x5T4wHlOzB8rz4J7W3K2_rf4ZFDsCSwFiM5tfYkPUJpM8wOimi3-nX7XRr2r8cSqutxbUiL4PcStiZ3Fy1LSMuqMcutpDKWkO-b-Z2AFK4mDXCgw4YNGSEAghAQW1d2UjNV-E7oqWcI16xz7G3COkdgPCIMs9jDk3aSeHNeNtd-sP9IVG86xWL"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="space-y-md">
+          <h4
+            class="text-title-sm font-title-sm text-on-surface uppercase tracking-wider"
+          >
+            Keep in Touch
+          </h4>
+          <div class="flex gap-md">
+            <a
+              class="w-8 h-8 rounded-full bg-on-surface flex items-center justify-center text-surface hover:bg-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-[18px]">public</span>
+            </a>
+            <a
+              class="w-8 h-8 rounded-full bg-on-surface flex items-center justify-center text-surface hover:bg-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-[18px]">share</span>
+            </a>
+            <a
+              class="w-8 h-8 rounded-full bg-on-surface flex items-center justify-center text-surface hover:bg-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-[18px]"
+                >video_library</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto border-t border-outline-variant mt-xl pt-lg flex flex-col md:flex-row justify-between items-center gap-md"
+      >
+        <p class="text-body-md text-on-surface-variant">
+          © 2026 MynFit. All rights reserved.
+        </p>
+        <div class="flex items-center gap-lg">
+          <span
+            class="text-label-md text-on-surface-variant uppercase font-bold"
+            >100% Original Products</span
+          >
+          <span
+            class="text-label-md text-on-surface-variant uppercase font-bold"
+            >Free Shipping over ₹1499</span
+          >
+        </div>
+      </div>
+    </footer>
+    <!-- Mobile Navigation Shell (Suppressed on Desktop) -->
+    <div
+      class="md:hidden fixed bottom-0 w-full bg-surface shadow-2xl flex justify-around items-center h-16 border-t border-outline-variant z-50"
+    >
+      <button class="flex flex-col items-center text-primary">
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >home</span
+        >
+        <span class="text-[10px] font-bold">Home</span>
+      </button>
+      <button class="flex flex-col items-center text-on-surface-variant">
+        <span class="material-symbols-outlined">explore</span>
+        <span class="text-[10px] font-bold">Categories</span>
+      </button>
+      <button class="flex flex-col items-center text-on-surface-variant">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="text-[10px] font-bold">Studio</span>
+      </button>
+      <button class="flex flex-col items-center text-on-surface-variant">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[10px] font-bold">Profile</span>
+      </button>
+    </div>
+    <script>
+      // Micro-interaction for product cards
+      document.querySelectorAll(".group").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.classList.add("shadow-2xl", "-translate-y-1");
+        });
+        card.addEventListener("mouseleave", () => {
+          card.classList.remove("shadow-2xl", "-translate-y-1");
+        });
+      });
+
+      // Search bar focus effect
+      const searchInput = document.querySelector('input[type="text"]');
+      searchInput.addEventListener("focus", () => {
+        searchInput.parentElement.classList.add("shadow-inner");
+      });
+      searchInput.addEventListener("blur", () => {
+        searchInput.parentElement.classList.remove("shadow-inner");
+      });
+    </script>
+    <script src="../shared/mynfit.js"></script>
+  </body>
+</html>
