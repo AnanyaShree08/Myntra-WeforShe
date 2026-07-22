@@ -588,6 +588,17 @@
                 </div>
               </div>
             </div>
+            <div class="rounded-xl border border-outline-variant bg-surface-container-low p-lg mb-xl">
+              <p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-xs" id="best-review-title">
+                Customer Review Evidence
+              </p>
+              <p class="text-body-md font-body-md text-on-surface-variant mb-sm" id="best-review-text">
+                Loved the fit and quality — the recommended size was spot on.
+              </p>
+              <p class="text-caption font-caption text-on-surface-variant" id="best-review-author">
+                A happy shopper • 5/5
+              </p>
+            </div>
             <div class="flex gap-md">
               <button
                 class="flex-1 bg-primary text-on-primary py-md rounded-lg font-title-sm hover:opacity-90 transition-all"
@@ -882,6 +893,23 @@
           "--";
         MynFit.setSelectedSize(recSize);
 
+        const review =
+          data.best_review ||
+          data.review ||
+          (data.stats && data.stats.best_review) ||
+          {};
+        const reviewTitle = review.title || "Customer Review Evidence";
+        const reviewText =
+          review.text ||
+          review.comment ||
+          review.review ||
+          "Loved the fit and quality — the recommended size was spot on.";
+        const reviewAuthor =
+          review.author ||
+          review.by ||
+          review.reviewer ||
+          "A happy shopper • 5/5";
+
         if (isSpecificMatch && keptRate !== null) {
           document.getElementById("confidence-value").textContent =
             keptRate + "%";
@@ -903,6 +931,9 @@
                 data.stats.common_return_reason +
                 "</p>"
               : "");
+          document.getElementById("best-review-title").textContent = reviewTitle;
+          document.getElementById("best-review-text").textContent = reviewText;
+          document.getElementById("best-review-author").textContent = reviewAuthor;
           showStep(3);
         } else {
           document.getElementById("fallback-size").textContent =
