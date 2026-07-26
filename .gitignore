@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Sensitive environment files
+.env
+.env.*
+
+# Python bytecode cache directories
+__pycache__/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.orig
+
+# Generated database/files
+*.sqlite3
+
+# Ignore local data cache
+backend/data/*.pkl

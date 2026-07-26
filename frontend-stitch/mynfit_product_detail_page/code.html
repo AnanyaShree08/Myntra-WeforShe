@@ -351,6 +351,11 @@
               <button
                 class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface hover:border-on-surface transition-colors"
               >
+                XS
+              </button>
+              <button
+                class="w-14 h-14 rounded-lg border border-outline-variant flex items-center justify-center font-bold text-on-surface hover:border-on-surface transition-colors"
+              >
                 S
               </button>
               <button
@@ -1310,10 +1315,13 @@
       }
 
       function renderResult(data) {
-        const isSpecificMatch =
-          data.matched_on &&
-          data.matched_on.includes("brand") &&
-          data.matched_on.includes("category");
+        // Any level that used the brand (cluster_brand_category, cluster_brand,
+        // or brand_only) is genuinely brand-specific data and should show the
+        // confident match screen. Only the true last-resort level - category
+        // only, no brand at all - should show the generic "Limited Data Match"
+        // screen. Previously this required BOTH brand AND category, which
+        // wrongly treated real brand-specific matches as if they were generic.
+        const isSpecificMatch = data.matched_on && data.matched_on.includes("brand");
         const keptRate = data.stats && data.stats.kept_rate != null ? Math.round(data.stats.kept_rate * 100) : null;
         const recSize = data.recommended_size || (data.stats && data.stats.recommended_size) || "M";
 
@@ -1386,9 +1394,15 @@
     </script>
     <script>
       // Product context for this page (would come from the actual product being viewed).
-      const product = MynFit.getProduct();
-      const PRODUCT_BRAND = product.brand;
-      const PRODUCT_CATEGORY = product.category;
+      // This page displays the "ESSENTIA LUXE" blazer - so that's its real
+      // default product, independent of whatever was last clicked/cached on
+      // another page. URL params (?brand=...&category=...) can still override
+      // this if this page was reached via a proper product link.
+      const _urlParams = new URLSearchParams(location.search);
+      const PRODUCT_BRAND = _urlParams.get("brand")
+        ? MynFit.normalizeBrand(_urlParams.get("brand"))
+        : "Zara";
+      const PRODUCT_CATEGORY = _urlParams.get("category") || "Shirt";
       const BACKEND_URL = MynFit.mynFitUrl;
 
       // This page has no input form (assumes a returning shopper with a saved

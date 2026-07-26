@@ -261,21 +261,21 @@
         <div class="flex flex-col justify-center gap-md">
           <span
             class="text-label-md font-label-md text-primary tracking-widest uppercase"
-            >Premium Essentials</span
+            >Roadstar</span
           >
           <h1 class="text-display-lg font-display-lg text-on-surface">
-            Relaxed Fit Supima Tee
+            Casual Cotton T-shirt
           </h1>
           <div class="flex items-baseline gap-xs">
             <span class="text-headline-md font-headline-md text-on-surface"
-              >₹1,299</span
+              >₹1,499</span
             >
             <span
               class="text-body-md font-body-md text-on-surface-variant line-through"
               >₹2,499</span
             >
             <span class="text-label-md font-label-md text-secondary"
-              >(48% OFF)</span
+              >(40% OFF)</span
             >
           </div>
           <div class="mt-md">
@@ -761,9 +761,15 @@
       // Product context for this page. In a real app this would come from
       // the product being viewed (e.g. passed in via URL or page data).
       // Must match brand/category values that exist in the backend dataset.
-      const product = MynFit.getProduct();
-      const PRODUCT_BRAND = product.brand;
-      const PRODUCT_CATEGORY = product.category;
+      // This page displays the "Roadster Relaxed Fit Supima Tee" - so that's
+      // its real default product, independent of whatever was last
+      // clicked/cached on another page. URL params can still override this
+      // if this page was reached via a proper product link.
+      const _urlParams = new URLSearchParams(location.search);
+      const PRODUCT_BRAND = _urlParams.get("brand")
+        ? MynFit.normalizeBrand(_urlParams.get("brand"))
+        : "Roadster";
+      const PRODUCT_CATEGORY = _urlParams.get("category") || "Shirt";
       const BACKEND_URL = MynFit.mynFitUrl;
 
       let selectedGender = "Male"; // default matches the pre-selected "Men" button
@@ -879,10 +885,10 @@
       }
 
       function renderResult(data) {
-        const isSpecificMatch =
-          data.matched_on &&
-          data.matched_on.includes("brand") &&
-          data.matched_on.includes("category");
+        // See mynfit_product_detail_page/code.html for why this only checks
+        // "brand", not "brand" AND "category" - any brand-aware match level
+        // is real, brand-specific data and deserves the confident match screen.
+        const isSpecificMatch = data.matched_on && data.matched_on.includes("brand");
         const keptRate =
           data.stats && data.stats.kept_rate != null
             ? Math.round(data.stats.kept_rate * 100)
