@@ -1,132 +1,336 @@
 # MynFit
 
-MynFit is a fashion fit-recommendation demo. It recommends a clothing size
-from a shopper's height, weight, gender, product brand, and category. The
-recommendation is based on similar shoppers' fit outcomes in the supplied
-20,000-row dataset.
+MynFit is an AI-powered fashion size recommendation system built with
+**FastAPI** for the backend and a static HTML/CSS/JavaScript frontend.
+The backend recommends the best clothing size using a shopper's height,
+weight, gender, brand, and category.
 
-## Features
+------------------------------------------------------------------------
 
-- Product browsing and product-detail screens
-- Fit form for height, weight, and gender
-- Size recommendation API powered by FastAPI
-- Gender-specific body clusters built from height and weight
-- Confidence and fit explanation based on comparable shoppers
-- Shared browser state for the selected product, shopper profile, and size
+# Project Structure
 
-## Project structure
-
-```text
-backend/                         FastAPI recommendation service
-  app.py                          API entry point
-  recommend.py                    Recommendation and fallback logic
-  clustering.py                   Gender-specific KMeans clustering
-  fit_stats.py                    Fit statistics and size scoring
-  data/                           Dataset and cleaned data
-
-frontend-stitch/                 Static HTML frontend
-  mynfit_landing_page/            First page to open
-  mynfit_product_listing_page/    Product listing
-  mynfit_product_detail_page/     Blazer detail page
-  mynfit_recommendation_flow/     Measurement and recommendation flow
-  shared/mynfit.js                Shared API and browser-state helper
+``` text
+MynFit/
+│
+├── backend/
+│   ├── app.py
+│   ├── recommend.py
+│   ├── clustering.py
+│   ├── fit_stats.py
+│   ├── requirements.txt
+│   ├── data/
+│   └── venv/                (created locally)
+│
+└── frontend-stitch/
+    ├── mynfit_landing_page/
+    ├── mynfit_product_listing_page/
+    ├── mynfit_product_detail_page/
+    ├── mynfit_recommendation_flow/
+    └── shared/
 ```
 
-## Requirements
+------------------------------------------------------------------------
 
-- Python 3.11 or later
-- The included Python environment at `backend/venv` or the dependencies in
-  `backend/requirements.txt`
-- A modern browser such as Chrome or Edge
+# Recommended Software
 
-## Run the project locally
+  Software       Version
+  -------------- ---------------------
+  Python         **3.11.9 (64-bit)**
+  pip            Latest
+  FastAPI        0.110.0
+  Uvicorn        0.28.0
+  NumPy          **1.26.4**
+  Pandas         **2.2.1**
+  Scikit-learn   1.4.1.post1
 
-### 1. Start the backend
+> **Avoid Python 3.13 and NumPy 2.x** unless every dependency has been
+> verified compatible.
 
-Open PowerShell in the project folder and run:
+------------------------------------------------------------------------
 
-```powershell
+# Recommended requirements.txt
+
+``` txt
+fastapi==0.110.0
+uvicorn==0.28.0
+
+numpy==1.26.4
+pandas==2.2.1
+
+scikit-learn==1.4.1.post1
+openpyxl==3.1.2
+
+pydantic==2.6.4
+python-dotenv==1.0.1
+
+google-generativeai==0.4.1
+```
+
+------------------------------------------------------------------------
+
+# Backend Setup
+
+## Step 1 --- Open Terminal
+
+``` powershell
 cd backend
-.\venv\Scripts\python.exe -m uvicorn app:app --reload
 ```
 
-The API runs at `http://127.0.0.1:8000`.
+------------------------------------------------------------------------
 
-You can confirm that it is working by opening:
+## Step 2 --- Check Python Version
 
-```text
-http://127.0.0.1:8000/docs
+``` powershell
+python --version
 ```
 
-Keep this PowerShell window open while using the frontend.
+Expected:
 
-### 2. Open the frontend
+``` text
+Python 3.11.9
+```
 
-Open this file in your browser:
+If another version appears, install Python 3.11.9 and ensure it is first
+in PATH.
 
-```text
+------------------------------------------------------------------------
+
+## Step 3 --- Remove Existing Virtual Environment (Recommended)
+
+Windows CMD
+
+``` cmd
+rmdir /s /q venv
+```
+
+PowerShell
+
+``` powershell
+Remove-Item -Recurse -Force venv
+```
+
+------------------------------------------------------------------------
+
+## Step 4 --- Create New Virtual Environment
+
+``` powershell
+python -m venv venv
+```
+
+------------------------------------------------------------------------
+
+## Step 5 --- Activate Environment
+
+PowerShell
+
+``` powershell
+.\venv\Scripts\Activate.ps1
+```
+
+If execution is blocked:
+
+``` powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Activate again.
+
+You should now see:
+
+``` text
+(venv)
+```
+
+------------------------------------------------------------------------
+
+## Step 6 --- Upgrade pip
+
+``` powershell
+python -m pip install --upgrade pip
+```
+
+------------------------------------------------------------------------
+
+## Step 7 --- Install Dependencies
+
+``` powershell
+pip install -r requirements.txt
+```
+
+------------------------------------------------------------------------
+
+## Step 8 --- Verify Installation
+
+``` powershell
+python --version
+python -c "import numpy; print(numpy.__version__)"
+python -c "import pandas; print(pandas.__version__)"
+python -c "import sklearn; print(sklearn.__version__)"
+```
+
+Expected:
+
+``` text
+Python 3.11.9
+1.26.4
+2.2.1
+1.4.1.post1
+```
+
+------------------------------------------------------------------------
+
+## Step 9 --- Start FastAPI
+
+``` powershell
+python -m uvicorn app:app --reload
+```
+
+Expected:
+
+``` text
+Uvicorn running on http://127.0.0.1:8000
+```
+
+Swagger:
+
+    http://127.0.0.1:8000/docs
+
+------------------------------------------------------------------------
+
+# Running the Frontend
+
+Open:
+
+``` text
 frontend-stitch/mynfit_landing_page/code.html
 ```
 
-This is the project’s first page. From there, browse products or select
-**Find Your Fit**.
+Keep the backend terminal running.
 
-### 3. Use the fit recommendation
+------------------------------------------------------------------------
 
-1. Select a product or choose **Find Your Fit**.
-2. Enter height, weight, and gender.
-3. Select **Calculate Recommendation**.
-4. The frontend sends a request to `POST /fit-twin` and displays the
-   recommended size.
+# API
 
-## API
+**POST** `/mynfit`
 
-### `POST /fit-twin`
+Example:
 
-Example request body:
-
-```json
+``` json
 {
-  "height_cm": 165,
-  "weight_kg": 62,
-  "gender": "Female",
-  "brand": "Zara",
-  "category": "Shirt"
+  "height_cm":165,
+  "weight_kg":62,
+  "gender":"Female",
+  "brand":"Zara",
+  "category":"Shirt"
 }
 ```
 
-The response includes the recommended size, confidence information, matching
-level, cohort statistics, and a shopper-friendly explanation.
+------------------------------------------------------------------------
 
-## Recommendation approach
+# Common Problems
 
-MynFit first finds a gender-specific height/weight cluster, then looks for
-enough comparable shoppers using this order:
+## ModuleNotFoundError
 
-1. Cluster + brand + category
-2. Cluster + category
-3. Cluster + brand
-4. Cluster only
-5. Brand + category
-6. Category only
-7. Brand only
-8. Overall dataset baseline
+``` text
+No module named 'uvicorn'
+```
 
-A size must have at least 10 matching shopper records before it can be
-recommended. This prevents very small groups from producing unreliable size
-recommendations.
+Fix:
 
-## Troubleshooting
+``` powershell
+pip install -r requirements.txt
+```
 
-- **“Could not reach the Fit Twin backend”**: ensure the backend command is
-  still running and that port `8000` is available.
-- **Old recommendations after changing backend code**: stop the running API
-  with `Ctrl+C`, then start it again using the command above.
-- **Frontend is deployed separately**: set `window.MYNFIT_API_BASE_URL` before
-  loading `frontend-stitch/shared/mynfit.js` so it points to the deployed API.
+------------------------------------------------------------------------
 
-## Current scope
+## NumPy / Pandas Compatibility Error
 
-This is a demo application. Product data, cart actions, wishlist, filters, and
-most navigation are frontend prototypes. The fit recommendation flow is the
-connected backend feature.
+Example:
+
+``` text
+ImportError: numpy.core.multiarray failed to import
+ValueError: numpy.dtype size changed
+```
+
+Fix:
+
+1.  Delete `venv`
+2.  Create a new virtual environment
+3.  Install dependencies again
+
+------------------------------------------------------------------------
+
+## Wrong Python Version
+
+Check:
+
+``` powershell
+python --version
+where python
+```
+
+If Python 3.13 appears, install Python 3.11.9 and recreate the virtual
+environment.
+
+------------------------------------------------------------------------
+
+## Backend Not Reachable
+
+Verify:
+
+    http://127.0.0.1:8000/docs
+
+If unavailable:
+
+``` powershell
+python -m uvicorn app:app --reload
+```
+
+------------------------------------------------------------------------
+
+# Git Setup for Contributors
+
+Clone:
+
+``` bash
+git clone <repository-url>
+cd MynFit
+```
+
+Create a feature branch:
+
+``` bash
+git switch -c feature-name
+```
+
+Commit:
+
+``` bash
+git add .
+git commit -m "Describe changes"
+```
+
+Push:
+
+``` bash
+git push -u origin feature-name
+```
+
+------------------------------------------------------------------------
+
+# Tech Stack
+
+-   FastAPI
+-   Python
+-   Pandas
+-   NumPy
+-   Scikit-learn
+-   OpenPyXL
+-   Google Generative AI
+-   HTML
+-   CSS
+-   JavaScript
+
+------------------------------------------------------------------------
+
+Happy Coding!

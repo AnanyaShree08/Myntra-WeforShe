@@ -6,6 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="../shared/ui.css" rel="stylesheet" />
     <title>MynFit - Find Your Fit</title>
+    <link rel="icon" href="../pics/Title logo.png" type="image/png" />
+    <link rel="shortcut icon" href="../pics/Title logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../pics/MynFit-logo.png" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap"
@@ -182,7 +185,7 @@
       .step-transition {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      .fit-twin-gradient {
+      .mynfit-gradient {
         background: linear-gradient(135deg, #b90041 0%, #fd517a 100%);
       }
     </style>
@@ -192,12 +195,13 @@
     <header
       class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex justify-between items-center px-gutter max-w-7xl mx-auto left-0 right-0"
     >
-      <div
-        class="text-display-lg-mobile font-black tracking-tighter text-primary cursor-pointer"
-        onclick="location.href = '../mynfit_landing_page/code.html'"
-      >
-        MynFit
-      </div>
+      <a href="../mynfit_landing_page/code.html" class="flex items-center">
+        <img
+          alt="MynFit Logo"
+          class="h-10 w-auto"
+          src="../pics/MynFit-logo.png"
+        />
+      </a>
       <nav class="hidden md:flex gap-lg items-center">
         <a
           class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md"
@@ -257,21 +261,21 @@
         <div class="flex flex-col justify-center gap-md">
           <span
             class="text-label-md font-label-md text-primary tracking-widest uppercase"
-            >Premium Essentials</span
+            >Roadstar</span
           >
           <h1 class="text-display-lg font-display-lg text-on-surface">
-            Relaxed Fit Supima Tee
+            Casual Cotton T-shirt
           </h1>
           <div class="flex items-baseline gap-xs">
             <span class="text-headline-md font-headline-md text-on-surface"
-              >₹1,299</span
+              >₹1,499</span
             >
             <span
               class="text-body-md font-body-md text-on-surface-variant line-through"
               >₹2,499</span
             >
             <span class="text-label-md font-label-md text-secondary"
-              >(48% OFF)</span
+              >(40% OFF)</span
             >
           </div>
           <div class="mt-md">
@@ -304,7 +308,7 @@
           >
             <div class="flex items-center gap-sm">
               <div
-                class="w-10 h-10 rounded-full fit-twin-gradient flex items-center justify-center"
+                class="w-10 h-10 rounded-full mynfit-gradient flex items-center justify-center"
               >
                 <span
                   class="material-symbols-outlined text-on-primary text-[20px]"
@@ -315,7 +319,7 @@
               <div>
                 <p class="text-title-sm font-title-sm">Confused about size?</p>
                 <p class="text-caption font-caption text-on-surface-variant">
-                  Let our FitTwin AI find your perfect match.
+                  Let our MynFit AI find your perfect match.
                 </p>
               </div>
             </div>
@@ -454,10 +458,10 @@
         <div class="step-transition hidden p-xl text-center py-32" id="step-2">
           <div class="relative w-24 h-24 mx-auto mb-xl">
             <div
-              class="absolute inset-0 rounded-full fit-twin-gradient animate-ping opacity-20"
+              class="absolute inset-0 rounded-full mynfit-gradient animate-ping opacity-20"
             ></div>
             <div
-              class="relative w-24 h-24 rounded-full fit-twin-gradient flex items-center justify-center text-on-primary"
+              class="relative w-24 h-24 rounded-full mynfit-gradient flex items-center justify-center text-on-primary"
             >
               <span
                 class="material-symbols-outlined text-[48px]"
@@ -583,6 +587,17 @@
                   </ul>
                 </div>
               </div>
+            </div>
+            <div class="rounded-xl border border-outline-variant bg-surface-container-low p-lg mb-xl">
+              <p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-xs" id="best-review-title">
+                Customer Review Evidence
+              </p>
+              <p class="text-body-md font-body-md text-on-surface-variant mb-sm" id="best-review-text">
+                Loved the fit and quality — the recommended size was spot on.
+              </p>
+              <p class="text-caption font-caption text-on-surface-variant" id="best-review-author">
+                A happy shopper • 5/5
+              </p>
             </div>
             <div class="flex gap-md">
               <button
@@ -746,10 +761,16 @@
       // Product context for this page. In a real app this would come from
       // the product being viewed (e.g. passed in via URL or page data).
       // Must match brand/category values that exist in the backend dataset.
-      const product = MynFit.getProduct();
-      const PRODUCT_BRAND = product.brand;
-      const PRODUCT_CATEGORY = product.category;
-      const BACKEND_URL = MynFit.fitTwinUrl;
+      // This page displays the "Roadster Relaxed Fit Supima Tee" - so that's
+      // its real default product, independent of whatever was last
+      // clicked/cached on another page. URL params can still override this
+      // if this page was reached via a proper product link.
+      const _urlParams = new URLSearchParams(location.search);
+      const PRODUCT_BRAND = _urlParams.get("brand")
+        ? MynFit.normalizeBrand(_urlParams.get("brand"))
+        : "Roadster";
+      const PRODUCT_CATEGORY = _urlParams.get("category") || "Shirt";
+      const BACKEND_URL = MynFit.mynFitUrl;
 
       let selectedGender = "Male"; // default matches the pre-selected "Men" button
 
@@ -856,7 +877,7 @@
           console.error(err);
           setTimeout(() => {
             alert(
-              "Could not reach the Fit Twin backend. Is it running on port 8000?",
+              "Could not reach the MynFit backend. Is it running on port 8000?",
             );
             showStep(1);
           }, 300);
@@ -864,10 +885,10 @@
       }
 
       function renderResult(data) {
-        const isSpecificMatch =
-          data.matched_on &&
-          data.matched_on.includes("brand") &&
-          data.matched_on.includes("category");
+        // See mynfit_product_detail_page/code.html for why this only checks
+        // "brand", not "brand" AND "category" - any brand-aware match level
+        // is real, brand-specific data and deserves the confident match screen.
+        const isSpecificMatch = data.matched_on && data.matched_on.includes("brand");
         const keptRate =
           data.stats && data.stats.kept_rate != null
             ? Math.round(data.stats.kept_rate * 100)
@@ -877,6 +898,23 @@
           (data.stats && data.stats.recommended_size) ||
           "--";
         MynFit.setSelectedSize(recSize);
+
+        const review =
+          data.best_review ||
+          data.review ||
+          (data.stats && data.stats.best_review) ||
+          {};
+        const reviewTitle = review.title || "Customer Review Evidence";
+        const reviewText =
+          review.text ||
+          review.comment ||
+          review.review ||
+          "Loved the fit and quality — the recommended size was spot on.";
+        const reviewAuthor =
+          review.author ||
+          review.by ||
+          review.reviewer ||
+          "A happy shopper • 5/5";
 
         if (isSpecificMatch && keptRate !== null) {
           document.getElementById("confidence-value").textContent =
@@ -899,6 +937,9 @@
                 data.stats.common_return_reason +
                 "</p>"
               : "");
+          document.getElementById("best-review-title").textContent = reviewTitle;
+          document.getElementById("best-review-text").textContent = reviewText;
+          document.getElementById("best-review-author").textContent = reviewAuthor;
           showStep(3);
         } else {
           document.getElementById("fallback-size").textContent =
