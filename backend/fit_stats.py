@@ -75,8 +75,9 @@ def _summarize(group: pd.DataFrame, cluster: str = None) -> dict:
 
     top_brands = group["brand"].value_counts().head(2).index.tolist() if n else []
 
-   size_breakdown = _size_breakdown(group)
+    size_breakdown = _size_breakdown(group)
     recommended_size = None
+
     if size_breakdown:
         ranked = sorted(
             size_breakdown,
@@ -88,14 +89,15 @@ def _summarize(group: pd.DataFrame, cluster: str = None) -> dict:
             reverse=True,
         )
         top = ranked[0]
-        # Guard against noise: only trust the top pick if it clearly beats
-        # the runner-up. Otherwise this cohort is too ambiguous to call.
+
         MIN_SCORE_MARGIN = 0.05
-        if len(ranked) > 1 and (size_breakdown[top]["score"] - size_breakdown[ranked[1]]["score"]) < MIN_SCORE_MARGIN:
+        if len(ranked) > 1 and (
+            size_breakdown[top]["score"]
+            - size_breakdown[ranked[1]]["score"]
+        ) < MIN_SCORE_MARGIN:
             recommended_size = None
         else:
             recommended_size = top
-
     return {
         "n": n,
         "kept_rate": round(kept / n, 2) if n else 0.0,
